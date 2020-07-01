@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .stage {
+                position: relative;
+                width: 500px;
+                overflow: hidden;
+            }
+            .stage .mask {
+                width: 50%;
+                height: 100%;
+                /* background: rgba(255, 0, 0, 0.5); */
+                background: url("./images/before.jpg");
+                background-size: auto 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .stage img {
+                max-width: 100%;
+                display: block;
+            }
+            .stage input {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                margin: 0;
+                /* display: none; */
+                opacity: 0;
+                z-index: 9;
+            }
+            .progress {
+                width: 100%;
+                height: 10px;
+                background: rgba(255, 255, 255, 0.3);
+                position: absolute;
+                left: 0;
+                bottom: 0;
+            }
+            .progress span {
+                width: 20px;
+                height: 10px;
+                background: white;
+                display: block;
+                position: relative;
+                top: 0;
+                left: 50%;
+                margin-left: -10px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <img src="./img/before.jpg" alt=""> -->
+
+        <div class="stage">
+            <div class="mask"></div>
+            <img src="./images/after.jpg" alt="" />
+            <input type="range" name="" id="" min="0" value="50" max="100" step="1" />
+            <div class="progress">
+                <span></span>
+            </div>
+        </div>
+
+        <script>
+            var stage = document.getElementsByClassName("stage")[0];
+
+            var mask = stage.getElementsByClassName("mask")[0];
+            var range = stage.getElementsByTagName("input")[0];
+
+            var dot = stage.getElementsByTagName("span")[0];
+            range.oninput = function () {
+                // console.log(typeof this.value, this.value);
+                mask.style.width = this.value + "%";
+                dot.style.left = this.value + "%";
+            };
+        </script>
+
+        <!-- 作业 https://www.17sucai.com/pins/demo-show?id=25562 -->
+    </body>
+</html>
