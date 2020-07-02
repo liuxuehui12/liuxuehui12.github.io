@@ -1,0 +1,18 @@
+.x-head {
+  background: #247db0;
+}
+.x-head .head-left {
+  float: left;
+  padding-top: 20px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+.x-head .head-right {
+  float: right;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.row {
+  background: #247db0;
+  padding: 200px 0px;
+}

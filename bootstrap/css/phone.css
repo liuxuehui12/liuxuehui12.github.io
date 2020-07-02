@@ -1,0 +1,135 @@
+body {
+  background: #2d2d2d;
+  font-family: "sofia-pro", Helvetica, Arial, sans-serif;
+}
+@media (min-width: 768px) {
+  .container .jumbotron {
+    margin-top: 260px;
+    position: relative;
+  }
+}
+.container .row .one-right img {
+  margin-top: 50px;
+  width: 100%;
+}
+.container .row .jumbotron {
+  text-align: center;
+  background-color: #2d2d2d;
+  color: white;
+}
+.container .row .jumbotron h1 {
+  font-weight: lighter;
+  font-size: 45px;
+  margin-bottom: 40px;
+}
+.container .row .jumbotron p {
+  color: #eee;
+  font-weight: 300px;
+  letter-spacing: 1px;
+}
+.container .row .jumbotron .btn {
+  background-color: #2d2d2d;
+  height: 55px;
+  font-size: 15px;
+  line-height: 50px;
+  font-weight: 400px;
+  padding: 0 40px;
+  border: 1px solid #ffcd05;
+  border-radius: 100px;
+}
+.container .row .jumbotron .max {
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  margin-left: -90px;
+}
+.container .row .jumbotron .btn:hover {
+  background-color: #ffcd05;
+}
+.container .two .col-xs-12 {
+  margin-top: 200px;
+  text-align: center;
+}
+.container .two .col-xs-12 img {
+  width: 100%;
+  margin-bottom: 25px;
+}
+.container .two .col-xs-12 h4 {
+  font-weight: 300px;
+  color: white;
+  font-size: 36px;
+  padding: 35px 0 15px 0;
+  line-height: 44px;
+}
+.container .three {
+  margin-top: 200px;
+  position: relative;
+}
+.container .three img {
+  width: 100%;
+  padding: 20px 0px;
+}
+.container .three .three-one {
+  left: -705px;
+}
+.container .three .three-two {
+  right: -705px;
+}
+.container .four {
+  margin-top: 100px;
+  text-align: center;
+}
+.container .four div {
+  color: white;
+}
+.container .four .text {
+  margin-bottom: 75px;
+}
+.container .four .text h4 {
+  font-size: 33px;
+  letter-spacing: 1px;
+  line-height: 45px;
+}
+.container .four .get {
+  position: relative;
+  top: 80px;
+}
+.container .four .get a {
+  display: inline-block;
+  text-decoration: none;
+  height: 55px;
+  line-height: 50px;
+  padding: 0 36px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  border: 1px solid #ffcd05;
+  border-radius: 100px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 80px;
+}
+.container .four a:hover {
+  background-color: #ffcd05;
+}
+.container .five {
+  text-align: center;
+}
+.container .five ul {
+  display: inline-block;
+  padding: 0;
+}
+.container .five ul li {
+  list-style: none;
+  float: left;
+}
+.container .five ul li a {
+  text-decoration: none;
+}
+.container .five ul li a i {
+  margin: 0 10px;
+  color: #888;
+}
+.container .five ul li i:hover {
+  color: #444;
+}
