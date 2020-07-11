@@ -1,0 +1,124 @@
+.button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid black;
+  background: #c4c9ca;
+  padding: 0 30px;
+  line-height: 30px;
+  border-radius: 18px;
+  outline: none;
+}
+.stage {
+  width: 360px;
+  height: 640px;
+  background: lightblue;
+  margin: 0px auto;
+  position: relative;
+  overflow: hidden;
+}
+.stage .start {
+  width: 100%;
+  height: 100%;
+  background: url("../images/background-start.png") no-repeat lightcoral;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s;
+}
+.stage .start button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid black;
+  background: #c4c9ca;
+  padding: 0 30px;
+  line-height: 30px;
+  border-radius: 18px;
+  outline: none;
+  bottom: 100px;
+}
+.stage .game {
+  width: 100%;
+  height: 100%;
+  background: url("../images/background-game.png");
+  background-size: 100% 100%;
+  background-position-y: 0;
+  position: absolute;
+  top: 0;
+  left: 360px;
+  transition: all 0.3s;
+}
+.stage .game table.ranking {
+  width: 50%;
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  margin-left: -25%;
+  transition: all 0.3s;
+  border: 2px solid black;
+  background: #c4c9ca;
+  z-index: 999;
+}
+.stage .game table.ranking tr th,
+.stage .game table.ranking tr td {
+  text-align: center;
+}
+.stage .game .death-scene {
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: all 0.3s;
+  z-index: 999;
+}
+.stage .game .death-scene button {
+  display: block;
+}
+.stage .game .death-scene .paylife {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid black;
+  background: #c4c9ca;
+  padding: 0 30px;
+  line-height: 30px;
+  border-radius: 18px;
+  outline: none;
+  position: relative;
+}
+.stage .game .death-scene .restart {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid black;
+  background: #c4c9ca;
+  padding: 0 30px;
+  line-height: 30px;
+  border-radius: 18px;
+  outline: none;
+  position: relative;
+  margin-top: 15px;
+}
+.stage .game img {
+  display: block;
+  position: absolute;
+}
+.stage.play .start {
+  left: -360px;
+}
+.stage.play .game {
+  left: 0;
+}
+.stage.paused table.ranking {
+  top: 100px;
+}
+.stage.death .death-scene {
+  bottom: 100px;
+}

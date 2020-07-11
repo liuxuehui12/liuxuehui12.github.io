@@ -1,0 +1,191 @@
+body {
+  background: black;
+}
+.row {
+  margin-top: 100px;
+  .one,
+  .two,
+  .three {
+    width: 200px;
+    height: 80px;
+    position: relative;
+    font-size: 20px;
+    text-align: center;
+    line-height: 80px;
+    border-radius: 20px;
+    overflow: hidden;
+    letter-spacing: 2px;
+    color: #66cccc;
+    cursor: pointer;
+    &:hover {
+      background: linear-gradient(#66cccc, #ff99cc);
+      box-shadow: 0 0 5px #66cccc, 0 0 25px #66cccc, 0 0 50px #ff99cc,
+        0 0 200px #ff99cc;
+      color: black;
+    }
+    .left {
+      position: absolute;
+      height: 2px;
+      width: 80px;
+      top: 0;
+      left: 2px;
+      background-color: lightcoral;
+      transform: rotate(90deg) translateX(80px);
+      transform-origin: left top;
+
+      animation-name: myleft;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+    }
+
+    &:hover .left {
+      animation-play-state: paused;
+      left: 0px;
+    }
+
+    @keyframes myleft {
+      0% {
+        transform: rotate(90deg) translateX(80px);
+      }
+      100% {
+        transform: rotate(90deg) translateX(-80px);
+      }
+    }
+
+    .right {
+      position: absolute;
+      top: 0;
+      left: 0px;
+      height: 2px;
+      width: 200px;
+      background: lightgreen;
+      transform: translateX(-200px);
+
+      animation-name: myright;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+      animation-delay: 0.25s;
+    }
+
+    &:hover .right {
+      animation-play-state: paused;
+      top: -2px;
+    }
+
+    @keyframes myright {
+      0% {
+        transform: translateX(-200px);
+      }
+      100% {
+        transform: translateX(200px);
+      }
+    }
+
+    .top {
+      position: absolute;
+      height: 2px;
+      width: 80px;
+      top: 0;
+      right: 2px;
+      background-color: lightseagreen;
+      transform-origin: right top;
+      transform: rotate(-90deg) translateX(80px);
+
+      animation-name: mytop;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+      animation-delay: 0.5s;
+    }
+
+    &:hover .top {
+      animation-play-state: paused;
+      right: 0px;
+    }
+
+    @keyframes mytop {
+      0% {
+        transform: rotate(-90deg) translateX(80px);
+      }
+      100% {
+        transform: rotate(-90deg) translateX(-80px);
+      }
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 2px;
+      width: 200px;
+      background-color: magenta;
+      transform: translateX(200px);
+      z-index: -1;
+
+      animation-name: mybottom;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+      animation-delay: 0.75s;
+    }
+
+    &:hover .bottom {
+      animation-play-state: paused;
+      bottom: -2px;
+    }
+
+    @keyframes mybottom {
+      0% {
+        transform: translateX(200px);
+      }
+      100% {
+        transform: translateX(-200px);
+      }
+    }
+  }
+  .two {
+    color: #666699;
+
+    &:hover {
+      background: linear-gradient(#666699, #ff9999);
+      box-shadow: 0 0 5px #666699, 0 0 25px #666699, 0 0 50px #ff99cc,
+        0 0 200px #ff9999;
+    }
+    .left{
+      background-color: #FF9999;
+    }
+    .right{
+      background-color: #996699;
+    }
+    .top{
+      background-color: #FFCCCC;
+    }
+    .bottom{
+      background-color: #CCCCFF;
+    }
+  }
+
+  .three {
+    color: #FF9999;
+
+    &:hover {
+      background: linear-gradient(#FF9999, #FFCC99);
+      box-shadow: 0 0 5px #FF9999, 0 0 25px #FF9999, 0 0 50px #FFCC99,
+        0 0 200px #FFCC99;
+    }
+    .left{
+      background-color: #FFFF99;
+    }
+    .right{
+      background-color: #FF99CC;
+    }
+    .top{
+      background-color: #66CC99;
+    }
+    .bottom{
+      background-color: #FFCC99;
+    }
+  }
+}

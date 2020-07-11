@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<style>
+			.score{
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" class="score" disabled="disabled" value="0"/>
+		<script>
+			//封装地图类
+			// 1.把地图相关的属性和方法封装起来 
+			// 2.地图需要什么属性? 宽度,高度,背景颜色以及定位方式 
+			// 3.地图需要什么方法? 显示地图的方法(创建div,设置CSS相关样式,添加到body 中)
+			function Map(){
+				that = this;
+				//地图宽度
+				this.width = 800;
+				//地图高度
+				this.height = 600;
+				//地图背景颜色
+				this.backgroundColor = "lightgray";
+				//地图定位
+				this.position = "relative";
+				//定义一个属性保存地图的Dom对象
+				this._map = null;
+				//速度
+				this.speed = 200;
+				//分数值
+				this.fenshu = 0;
+			    //文本框dom对象
+				this.score = document.querySelector(".score");
+				
+			}
+			//显示地图的方法
+			Map.prototype.show = function(){
+				//创建div
+				this._map = document.createElement("div");
+				//设置相关样式
+				this._map.style.width = this.width + "px";
+				this._map.style.height = this.height + "px";
+				this._map.style.position = this.position;
+				this._map.style.backgroundColor = this.backgroundColor;
+				 
+				//把div添加到body标签
+				document.body.appendChild( this._map );
+			}
+			 
+			//封装食物类
+			// 1.实现食物显示在地图上的基本功能 
+			// 2.食物需要什么属性? 宽度,高度,背景颜色,定位方式,因为需要随机在地图上显 示位置,所以还需要有水平坐标跟垂直坐标 
+			// 3.食物需要什么方法? 在地图上随机显示食物的方法,因为需要把食物加到地图 中,所以地图中需要再定义一个属性保存地图的dom元素
+			function Food(){
+				//食物的宽度
+				this.width = 20;
+				//食物的高度
+				this.height = 20;
+				//食物的背景颜色
+				this.backgroundColor = "orange";
+				//食物的定位方式
+				this.position = "absolute";
+				//食物出现在地图的水平坐标
+				this.x = 0;
+				//食物出现在地图的水平坐标
+				this.y = 0;
+				//定义一个属性保存食物的Dom对象
+				this._food = null;
+			}
+			//显示食物的方法
+			Food.prototype.show = function(){
+				//食物也使用div表示
+				if(this._food == null){
+					//创建div
+					this._food = document.createElement("div");
+					
+					//设置相关属性
+					this._food.style.width = this.width +"px";
+					this._food.style.height = this.height +"px";
+					this._food.style.backgroundColor = this.backgroundColor;
+					this._food.style.position = this.position;
+					
+					//添加食物到地图中
+					map._map.appendChild( this._food );
+				}
+				//随机得到食物出现的位置
+				this.randomPos();
+				 
+				//设置食物出现的位置
+				this._food.style.left = this.x * this.width +"px";
+				this._food.style.top = this.y * this.height +"px";
+			}
+			 
+			//实现食物 随机改变位置
+			// 需要根据地图的宽度高度计算食物可以出现x坐标范围和y坐标范围 
+			// 在计算食物的left和top属性之前 , 我们就可以调用这个方法得到随机位置
+			Food.prototype.randomPos = function(){
+				//随机得到x坐标 根据地图 x坐标最多780 最小0
+				var maxX = map.width/this.width - 1;
+				var minX = 0;
+				//随机得到y坐标 根据地图 y坐标最多580 最小0
+				var maxY = map.height/this.height - 1;
+				var minY = 0;
+				
+				this.x = Math.floor(Math.random()*(maxX-minX+1) + minX);
+				this.y = Math.floor(Math.random()*(maxY-minY+1) + minY);
+			}
+			
+			//封装蛇类
+			// 一个完整的蛇由多个蛇节构成 
+			// 一个蛇节由一个div表示 一个蛇节应该含有 x坐标 y坐标 颜色
+			// 还再给蛇节设置一个null值,后期根据蛇节的第四个元素判断是否为null,如果为 null代表不存在这个dom元素,则创建一个div元素作为蛇节 
+			// 因为一条蛇有多个蛇节和蛇头组成,所以可以使用二维数组表示蛇身体的数据
+			function Snake(){
+				//蛇类的属性
+				//蛇身的数据，每一个蛇身都是一个数组元素 x坐标 y坐标 颜色 null
+				this.body = [
+					[2,1,"skyblue",null],
+					[1,1,"lightgreen",null],
+					[1,0,"lightgreen",null],
+					[0,0,"lightgreen",null]
+				];
+				//蛇节的宽度
+				this.width = 20;
+				//蛇节的高度
+				this.height = 20;
+				//蛇节的定位方式
+				this.position = "absolute";
+				//蛇运动的方向，默认向右运动
+				this.direct = "right";
+			}
+			
+			//蛇类显示方法
+			// 可以使用forEach遍历蛇节数据,但是要注意this问题,根据蛇节的第四个元素 
+			// 判断是否为null,如果为null代表不存在这个dom元素,则创建一个div元素作为蛇节 
+			// 设置每个蛇节的样式(宽度,高度,定位方式,背景颜色) 
+			// 设置每个蛇节的坐标(根据蛇节数据中的x坐标和y坐标) 把每个蛇节追加到地图中
+			Snake.prototype.show = function(){
+				//显示蛇的方法，就是遍历蛇身体数据
+				this.body.forEach(function( item ){
+					//forEach里面的this指的是window
+					
+					//根据蛇节的第四个元素判断是否为null，如果是null就代表不存在这个dom元素，则就创建一个div元素作为蛇节
+					if(item[3] == null){
+						//创建蛇节 我们用div表示
+						item[3] = document.createElement("div");
+						
+						//设置每个蛇节的样式（宽度，高度，定位方式，背景颜色）
+						item[3].style.width = snake.width + "px";
+						item[3].style.height = snake.height + "px";
+						item[3].style.backgroundColor = item[2];
+						item[3].style.position = snake.position;
+						
+						//把每个蛇节追加到地图中
+						map._map.appendChild( item[3] );
+					}
+					
+					//设置每个蛇节的坐标
+					item[3].style.left = item[0]*snake.width +"px";
+					item[3].style.top = item[1]*snake.height +"px";
+				})
+			}
+			
+			//蛇类运动方法
+			// 跟方向有关的蛇节只有蛇头,其他蛇身的坐标都是沿用上一个蛇节的坐标,所以对于运动方向来说,我们只要控制好蛇头,蛇身跟上就好了
+			// 遍历蛇节数据 每一节延用上一节坐标 
+			// 由于每一节需要延用上一蛇节的坐标 先修改后面的蛇节 再修改前面的蛇节
+			// 注意:蛇头不用遍历
+			// 蛇可以向4个方向运动,所以需要有一个属性可以保存蛇运动的方向 
+			// 改变蛇的坐标以后,还要记得重新渲染蛇(也就是重新调用蛇显示的方法)
+			// 蛇还需要添加一个蛇移动方向的属性direct ,默认向右移动,所以该属性默认取值我们使用"right" 
+			// 运动方向有4种,但是运动方向只影响蛇头,所以要单独根据不同移动方向设置蛇头的坐标变化 
+			// 最后还要使用定时器调用蛇移动的方法,让蛇动起来
+			Snake.prototype.move = function(){
+				//遍历蛇节数据 每一节延用上一节坐标
+				for(var i = this.body.length - 1 ; i > 0 ; i--){
+					//延用上一个蛇节的X坐标
+					this.body[i][0] = this.body[i-1][0];
+					//延用上一个蛇节的y坐标
+					this.body[i][1] = this.body[i-1][1];
+				}
+				//处理蛇头，因为方向决定蛇头坐标的变化，所以我们需要给蛇定义一个属性保存运动的方向
+				switch( this.direct ){
+					case "right":
+					    this.body[0][0]++;
+					break;
+					
+					case "left":
+					    this.body[0][0]--;
+					break;
+					
+					case "down":
+					    this.body[0][1]++;
+					break;
+					
+					case "up":
+					    this.body[0][1]--;
+					break;
+				}
+				
+				//判断蛇是否出界
+				this.border();
+				
+				//判断蛇是否自残
+				this.suicade();
+				
+				//蛇运动的时候，也需要判断有没有吃饭食物
+				this.eat();
+				
+				//重新再地图上渲染蛇
+				this.show();
+			}
+			
+			
+			//检测是否吃到食物
+			// 在显示食物的方法中,也需要判断食物是否已经创建过dom元素,做法还是在食物 类中定义一个属性保存你dom元素
+			// 吃完食物以后, 食物要重新显示 
+			// 蛇要加长 ,其实就是给蛇身体的数据添加一个数组元素,坐标多少都无所谓,因为我们蛇移动的时候,每一蛇节都会延用上一蛇节的坐标 
+			// 蛇在不断的移动的同时还需要不断的判断是否吃到食物(在定时器中调用eat方法)
+			Snake.prototype.eat = function(){
+				//如果蛇头的坐标和食物的坐标一样就代表食物被吃了
+				// 蛇头的x坐标: this.body[0][0]
+				// 蛇头的y坐标: this.body[0][1]
+				// 食物的x坐标: food.x
+				// 食物的y坐标: food.y
+				
+				if(this.body[0][0] == food.x && this.body[0][1] == food.y){
+					//吃完食物以后，食物重新显示
+					food.show();
+					
+					//加分
+					that.fenshu++;
+					that.score.value = that.fenshu;
+					
+					//根据分数加速度
+					if(that.fenshu %2 == 0){//假设分数多2分就增加1的下落速度
+					    that.speed -=20;
+						clearInterval( timer );
+						timer = setInterval(function(){
+							
+							//让蛇不断移动
+							snake.move();
+						} , that.speed);
+					}
+					
+					//蛇要变长 其实是向蛇身数组添加一个元素 它会延用上一个的坐标
+					this.body.push( [-1,-1,"lightgreen",null] );
+				}
+			}
+			
+			//检测蛇是否出界
+			Snake.prototype.border = function(){
+				//出界就是看是否超出地图
+				if( this.body[0][0] <0 || this.body[0][0] >39 || this.body[0][1]<0 || this.body[0][1] >29){
+					//出界处理
+					//弹窗显示
+					alert("哎呀，撞墙了，游戏结束");
+					//清除定时器
+					clearInterval( timer );
+				}
+			}
+			
+			
+			//检测蛇是否自残
+			// 当蛇长度超过4的时候,就有可能出现自己吃自己的情况,也就是蛇头跟蛇身体某一节的坐标完全重合,那就是咬到了
+			// 在定时器中,蛇不断移动的同时,也需要不断的判断蛇是否吃到自己
+			Snake.prototype.suicade = function(){
+				for(var i = this.body.length - 1;i >= 4;i--){
+					if(this.body[i][0] == this.body[0][0] && this.body[i][1] == this.body[0][1]){
+						//吃到后处理
+						//弹窗提示
+						alert("咬到自己了，游戏结束");
+						//清除定时器
+						clearInterval( timer );
+					}
+				}
+			}
+			
+			//封装用户操作面板
+			//给页面document绑定键盘按下事件 
+			//给w s a d四个键,分别代表上下左右,当按下对应键的时候,可以改变蛇的运动方向,其实就是改变蛇类中的方向属性值, 同时要加判断,比如当前蛇不是向下运动 才可以按w改变为向上运动
+			document.onkeydown = function(e){
+				var e = e || event;
+				switch(e.key){
+					case "w":
+					    if( snake.direct != "down"){
+							snake.direct = "up";
+						}
+					break;
+					
+					case "s":
+					    if( snake.direct != "up"){
+							snake.direct = "down";
+						}
+					break;
+					
+					case "a":
+					    if( snake.direct != "right"){
+							snake.direct = "left";
+						}
+					break;
+					
+					case "d":
+					    if( snake.direct != "left"){
+							snake.direct = "right";
+						}
+					break;
+				}
+			}
+			
+			//实例化地图对象
+			var map = new Map();
+			//调用地图显示方法
+		    map.show();
+			
+			//实例化食物对象
+			var food = new Food();
+			//调用食物显示方法
+			food.show();
+			
+			//实例蛇对象
+			var snake = new Snake();
+			//调用蛇显示的方法
+			snake.show();
+			
+			//开启定时器
+			var timer = setInterval(function(){
+				
+				//让蛇不断移动
+				snake.move();
+			} , 200);
+		</script>
+	</body>
+</html>

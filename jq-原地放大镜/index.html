@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .blowup {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            margin: 20px;
+            cursor: crosshair;
+        }
+
+        .blowup img {
+            width: 100%;
+        }
+
+        .blowup .zoom {
+            width: 150px;
+            height: 150px;
+            /* background: url("./images/a1.png"); */
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border: 5px solid white;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="blowup left">
+            <img src="./images/a1.png" alt="">
+        </div>
+
+        <div class="blowup right">
+            <img src="./images/a2.png" alt="">
+        </div>
+    </div>
+
+    <style>
+        .right{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+
+    <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+
+    <script>
+        $.fn.blowup = function (zoomLevel) {
+            //this需要指代jQuery对象
+
+            this.append('<div class="zoom"></div>');
+
+            this.find('.zoom').css({
+                backgroundImage: "url(" + this.find("img").attr("src") + ")",
+                backgroundSize: this.width() * zoomLevel + 'px ' + this.height() * zoomLevel + 'px'
+            })
+
+            this.on("mousemove", function (event) {
+                //鼠标的指针位置
+                var x = event.pageX - $(this).offset().left;
+                var y = event.pageY - $(this).offset().top;
+
+                //console.log(x,y)
+
+                $(this).find(".zoom").show();
+
+                if (x > $(this).width() || x < 0 || y >= $(this).height() || y < 0) {
+                    $(this).find('.zoom').hide()
+                    return
+                }
+
+                var zoomSize = {
+                    w: $(this).find('.zoom').outerWidth(),
+                    h: $(this).find('.zoom').outerHeight()
+                }
+
+                $(this).find('.zoom').css({
+                    left: x - zoomSize.w / 2 + 'px',
+                    top: y - zoomSize.h / 2 + 'px',
+                    backgroundPositionX: -(x * zoomLevel + 5 - zoomSize.w / 2) + 'px',
+                    backgroundPositionY: -(y * zoomLevel + 5 - zoomSize.h / 2) + 'px',
+                })
+            })
+        }
+
+        $(".left").blowup(1);
+        $(".right").blowup(2);
+    </script>
+</body>
+
+</html>

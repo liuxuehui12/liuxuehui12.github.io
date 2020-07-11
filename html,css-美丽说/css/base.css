@@ -1,0 +1,59 @@
+/*外链式里面不能写style标签*/
+/*初始化样式开始*/
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+	color:#666666;
+}
+a:hover{
+	color:#ff3366;
+}
+li{
+	list-style: none;
+}
+input{
+	outline:none;
+	border:none;
+}
+/*版心类*/
+.w{
+	width: 1200px;
+	margin:0 auto;
+}
+/*左浮类*/
+.fl{
+	float: left;
+}
+/*右浮类*/
+.fr{
+	float: right;
+}
+/*去掉图片底部的缝隙*/
+img{
+	vertical-align: bottom;
+}
+body{
+	font-size:12px;
+	font-family: "微软雅黑","宋体";
+	color:#666666;
+}
+@font-face {
+  font-family: 'iconfont';
+  src: url('../fonts/iconfont.eot');
+  src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/iconfont.woff2') format('woff2'),
+      url('../fonts/iconfont.woff') format('woff'),
+      url('../fonts/iconfont.ttf') format('truetype'),
+      url('../fonts/iconfont.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/*初始化样式结束*/

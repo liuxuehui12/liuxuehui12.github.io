@@ -1,0 +1,172 @@
+body {
+  font-family: "宋体";
+}
+.container .row .col-xs-6 .x-left {
+  width: 220px;
+  height: 220px;
+  position: relative;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
+.container .row .col-xs-6 .x-left .x-border {
+  width: 230px;
+  height: 230px;
+  border: 10px solid #ecab18;
+  border-left-color: #1ad280;
+  border-bottom-color: #1ad280;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s;
+  z-index: 1;
+}
+.container .row .col-xs-6 .x-left:hover .x-border {
+  -webkit-transform: rotate(180deg);
+     -moz-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+       -o-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.container .row .col-xs-6 .x-left .x-img {
+  width: 220px;
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  bottom: 0;
+  right: 0;
+  z-index: -2;
+}
+.container .row .col-xs-6 .x-left .x-img img {
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
+.container .row .col-xs-6 .x-left .x-info {
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 5px;
+  color: white;
+  background-color: rgba(5, 5, 5, 0.5);
+  z-index: -1;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s;
+}
+.container .row .col-xs-6 .x-left .x-info .info {
+  padding-top: 30px;
+  margin: 0 30px;
+}
+.container .row .col-xs-6 .x-left .x-info .info h3 {
+  font-size: 35px;
+  letter-spacing: 1px;
+}
+.container .row .col-xs-6 .x-left .x-info .info p {
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 15px;
+  font-style: italic;
+  color: #bbb;
+}
+.container .row .col-xs-6 .x-left:hover .x-info {
+  opacity: 1;
+}
+.container .row .x-two {
+  margin-top: 40px;
+}
+.container .row .x-two .two {
+  width: 220px;
+  height: 220px;
+  position: relative;
+}
+.container .row .x-two .two .x-img {
+  width: 220px;
+  height: 220px;
+  position: relative;
+  z-index: 0;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s;
+}
+.container .row .x-two .two .x-img::before {
+  position: absolute;
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  z-index: 1;
+  -webkit-box-shadow: inset 0 0 0 16px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: inset 0 0 0 16px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 0 0 16px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.container .row .x-two .two .x-img img {
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
+.container .row .x-two .two:hover .x-img {
+  -webkit-transform: rotate(90deg);
+     -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+       -o-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.container .row .x-two .two .x-info {
+  width: 220px;
+  height: 220px;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  color: white;
+  background-color: rgba(5, 5, 5, 0.5);
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s;
+}
+.container .row .x-two .two .x-info .info {
+  padding-top: 30px;
+  margin: 0 30px;
+}
+.container .row .x-two .two .x-info .info h3 {
+  font-size: 35px;
+  letter-spacing: 1px;
+}
+.container .row .x-two .two .x-info .info p {
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 15px;
+  font-style: italic;
+  color: #bbb;
+}
+.container .row .x-two .two .x-img:hover .x-info {
+  -webkit-transform: translateX(-100%);
+     -moz-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+       -o-transform: translateX(-100%);
+          transform: translateX(-100%);
+  opacity: 1;
+}
+/*# sourceMappingURL=./02-btn.css.map */

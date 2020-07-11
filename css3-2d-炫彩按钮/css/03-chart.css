@@ -1,0 +1,109 @@
+html,
+body {
+  height: 100%;
+  font-family: "宋体";
+}
+.stage {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #7889cb;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.stage .card {
+  width: 30%;
+  padding-bottom: 40%;
+  background: url("../img/600x600.jpg") red no-repeat;
+  -moz-background-size: cover;
+       background-size: cover;
+  background-position: center;
+  color: white;
+  -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+          border-radius: 15px;
+  -webkit-transform-origin: 50% 50% 100px;
+     -moz-transform-origin: 50% 50% 100px;
+      -ms-transform-origin: 50% 50% 100px;
+       -o-transform-origin: 50% 50% 100px;
+          transform-origin: 50% 50% 100px;
+  -webkit-transition: inherit;
+  -o-transition: inherit;
+  -moz-transition: inherit;
+  transition: inherit;
+  -webkit-transform: translateZ(200px);
+     -moz-transform: translateZ(200px);
+          transform: translateZ(200px);
+  position: relative;
+}
+.stage .card .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.stage .card .content h1 {
+  font-size: 36px;
+}
+.stage .card .content h3 {
+  line-height: 3em;
+}
+.stage .card .content ul.chart {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.stage .card .content p {
+  font-size: 36px;
+}
+.stage.active .card {
+  -webkit-transform: translateZ(200px) rotateX(60deg);
+     -moz-transform: translateZ(200px) rotateX(60deg);
+          transform: translateZ(200px) rotateX(60deg);
+}
+/*# sourceMappingURL=./03-chart.css.map */

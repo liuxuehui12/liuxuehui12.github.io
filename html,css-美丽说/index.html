@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>美丽说-潮流穿搭快人一步</title>
+	<!-- link:favicon再按tab键 -->
+	<!-- favicon.ico一般不放在images目录,会放在项目目录下 -->
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<meta name="Keywords" content="美丽说网上购物,网上商城,手机,笔记本,电脑,MP3,CD,VCD,DV,相机,数码,配件,手表,存储卡" />
+	<meta name="description" content="美丽说是国内白领女性时尚消费品牌，目前拥有超过1亿的女性注册用户，其中58.3%的用户是年龄集中在23-30 岁的年轻白领，75%以上的用户家庭月收入在10000到20000元人民币之间"/>
+	<!-- 引入base.css样式文件 -->
+	<link rel="stylesheet" href="css/base.css">
+	<!-- 引入index.css样式文件 -->
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<!-- 顶部导航栏开始 -->
+	<div class="top_nav">
+		<div class="w">
+			<ul>
+				<li><a href="#"><span class="weixin"></span>微信登录</a></li>
+				<li><a href="#"><span class="qq"></span>QQ登录</a></li>
+				<li><a href="#">登录</a></li>
+				<li><a href="#">注册</a></li>
+				<li class="drop">
+					<a href="#"><span class="shoucang"></span>我的收藏</a>
+					<ul class="down">
+						<li><a href="#">收藏宝贝</a></li>
+						<li><a href="#">收藏店铺</a></li>
+					</ul>
+				</li>
+				<li><a href="#"><span class="shopcart"></span>我的购物车</a></li>
+				<li><a href="#"><span class="dingdan"></span>我的订单</a></li>
+				<li class="drop">
+					<a href="#">帮助中心<span class="help_center"></span></a>
+					<ul class="down">
+						<li><a href="#">买家服务</a></li>
+						<li><a href="#">商家服务</a></li>
+						<li><a href="#">规则中心</a></li>
+					</ul>
+				</li>
+				<li><a href="#">商家后台</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 顶部导航栏结束 -->
+
+	<!-- logo层开始 -->
+	<div class="logo w">
+		<!-- logo图片层 -->
+		<div class="logo_img fl">
+			<h1>
+				<a href="#">美丽说</a>
+			</h1>
+		</div>
+		
+		<!-- 搜索层 -->
+		<div class="search fl">
+			<div class="top">
+				<span class="current">宝贝</span>
+				<span>店铺</span>
+			</div>
+
+			<script type="text/javascript">
+				// 获取.search .top下所有的span元素
+				var spans = document.querySelectorAll(".search .top span");
+				for(var i=0;i<spans.length;i++){
+					spans[i].onclick=function(){
+						for(var j=0;j<spans.length;j++){
+							spans[j].removeAttribute("class");
+						}
+						this.className = "current";
+					}
+				}
+			</script>
+
+			<div class="middle">
+				<input type="text">
+				<span></span>
+			</div>
+
+			<div class="bottom">
+				<ul>
+					<li><a href="#" class="red">连衣裙</a></li>
+					<li><a href="#">运动鞋</a></li>
+					<li><a href="#" class="red">雪纺衫</a></li>
+					<li><a href="#" class="red">衬衫</a></li>
+					<li><a href="#">薄外套</a></li>
+					<li><a href="#">T恤</a></li>
+					<li><a href="#">套装</a></li>
+					<li><a href="#">牛仔裤</a></li>
+					<li><a href="#" class="red">小白鞋</a></li>
+					<li><a href="#">风衣</a></li>
+					<li><a href="#" class="red">绑带凉鞋</a></li>
+					<li><a href="#">粗跟单鞋</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<!-- 二维码层 -->
+		<div class="qrcode fr">
+			<img src="images/meilishuo_app.gif">
+		</div>
+	</div>
+	<!-- logo层结束 -->
+
+	
+	<!-- 主导航栏开始 -->
+	<div class="main_nav">
+		<div class="w">
+			<ul>
+				<li><a href="#">首页</a></li>
+				<li><a href="#">上衣</a></li>
+				<li><a href="#">裙子</a></li>
+				<li><a href="#">裤子</a></li>
+				<li><a href="#">女鞋</a></li>
+				<li><a href="#">包包</a></li>
+				<li><a href="#">配饰</a></li>
+				<li><a href="#">美妆</a></li>
+				<li><a href="#">男友</a></li>
+				<li><a href="#">童装</a></li>
+				<li><a href="#">家居</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 滚动到一定位置,把导航栏固定住效果 -->
+	<script type="text/javascript">
+		var main_nav = document.querySelector(".main_nav");
+		var main_nav_top = main_nav.offsetTop;
+
+		window.addEventListener("scroll",function(){
+			if(window.pageYOffset <= main_nav_top){
+				main_nav.removeAttribute("style");
+			}else{
+				main_nav.style.position = "fixed";
+			}
+		})
+	</script>
+	<!-- 主导航栏结束 -->
+	
+
+	<!-- 轮播层开始 -->
+	<div class="banner w">
+        <!-- 左侧按钮 -->
+        <img src="images/prev.png" class="arrow_left">
+        <!-- 右侧按钮 -->
+        <img src="images/next.png" class="arrow_right">
+        
+        <!-- 核心的滚动区域 -->
+		<ul>
+			<li><a href="javascript:void(0)"><img src="images/banner01.jpg"/></a></li>
+			<li><a href="javascript:void(0)"><img src="images/banner02.jpg"/></a></li>
+			<li><a href="javascript:void(0)"><img src="images/banner03.jpg"/></a></li>
+			<li><a href="javascript:void(0)"><img src="images/banner04.jpg"/></a></li>
+			<li><a href="javascript:void(0)"><img src="images/banner05.jpg"/></a></li>
+            <li><a href="javascript:void(0)"><img src="images/banner06.jpg"/></a></li>
+        </ul>
+        
+        <!-- 指示器  小圆圈 -->
+        <ol class="circle">
+            
+        </ol>
+	</div>
+	<!-- 轮播层结束 -->
+
+	<!-- 轮播图效果 -->
+	<!-- 引入animate.js -->
+    <script src="js/animated.js"></script>
+    <script>
+        // 获取.banner层对象
+        var banner = document.querySelector(".banner");
+        // 获取.banner层对象的宽度
+        var bannerWidth = banner.offsetWidth;
+        // 获取左按钮
+        var arrow_left = document.querySelector(".arrow_left");
+        // 获取右按钮
+        var arrow_right = document.querySelector(".arrow_right");
+
+        // 1. 鼠标经过轮播图模块，左右按钮显示，离开隐藏左右按钮
+        banner.onmouseenter = function(){
+            arrow_left.style.display  = "block";
+            arrow_right.style.display = "block";
+            // 停止定时器
+            clearInterval(timer);
+            // 清除定时器变量
+            timer = null;
+        }
+        banner.onmouseleave = function(){
+            arrow_left.style.display  = "none";
+            arrow_right.style.display = "none";
+
+            // 重新开启定时器,不要加var
+            if( timer ==  null){
+                timer = setInterval(function(){
+                    arrow_right.click();
+                },2000);
+            }
+        }
+
+        // 2.动态生成指示器中的li(也就是动态生成小圆圈)
+            // 动态生成小圆圈
+            // 核心思路：小圆圈的个数要跟图片张数一致
+            // 首先先把HTML结构.circle下的li都删除掉,然后得到ul里面图片的张数（图片放入li里面，所以就是li的个数）
+            // 利用循环动态生成小圆圈（这个小圆圈要放入ol里面）
+            // 创建节点 createElement('li')
+            // 插入节点 ol.appendChild(li)
+            // 第一个小圆圈需要添加 current 类
+            
+        // 获取.banner ul对象
+        var ul     = document.querySelector(".banner ul");
+        // console.log(ul.children.length);
+        // 获取具有.circled的ol对象
+        var ol = document.querySelector(".banner .circle");
+
+        for(var i = 0;i < ul.children.length; i++ ){
+            // 创建li标签
+            var li = document.createElement("li");
+            // 记录当前小圆圈的索引号,通过自定义属性来做
+            li.setAttribute("index",i);
+            // 3. 被点击小圆圈高亮
+                // 小圆圈的排他思想
+                // 所有小圆圈都移除这个current类
+                // 点击当前小圆圈,就添加current类
+                // 注意:我们在刚才生成小圆圈的同时,就可以直接绑定这个点击事件了
+            li.onclick = function(){
+                for(var j=0; j<ol.children.length ;j++){
+                    ol.children[j].removeAttribute("class");
+                }
+                this.setAttribute("class","current");
+
+                // 4. 点击小圆圈滚动到对应图片
+                    // 滚动图片的核心算法： 点击某个小圆圈 ， 就让图片滚动  小圆圈的索引号乘以图片的宽度做为ul移动距离
+                    // 此时需要知道小圆圈的索引号， 我们可以在生成小圆圈的时候，给它设置一个自定义属性，点击的时候获取这个自定义属性即可
+                var index = this.getAttribute("index");
+                // 当我们点击了ol中某个小li 我们就要把这个li的索引号给num变量
+                num = index;
+                // 当我们点击了ol中某个小li 我们就要把这个li的索引号给circle变量
+                circle = index;
+
+                // console.log(bannerWidth);
+                // console.log(index);
+                // 执行动画
+                animated(ul,-index*bannerWidth);
+            }
+
+            // 把li添加到ol中
+            ol.appendChild(li);
+
+        }
+        // 把ol里面的第一个li设置类名为current
+        ol.children[0].className = "current";
+
+        // 声明一个变量
+        var num = 0;
+        // circle控制小圆圈的播放
+        var circle = 0;
+
+        // 5.点击右侧按钮一次，就让图片滚动一张
+            // 点击右侧按钮一次，就让图片滚动一张。 
+            // 声明一个变量num， 点击一次，自增1， 让这个变量乘以图片宽度，就是 ul 的滚动距离。
+            // 图片无缝滚动原理
+            // 把ul 第一个li 克隆一份，放到ul 的最后面
+            // 当图片滚动到克隆的最后一张图片时， 让ul 快速的、不做动画的跳到最左侧： left 为0
+            // 同时num 赋值为0，可以重新开始滚动图片了
+
+        // 6.克隆第一个li,包括里面的子节点也要克隆 放到 ul最后面
+        var first = ul.children[0].cloneNode(true);
+        ul.appendChild(first);
+        // 设置ul的宽度,不然最后一个li无法显示出来
+        ul.style.width = ul.children.length*100+"%";
+
+        // flag 节流阀
+        var flag = true;
+
+        // 右侧按钮
+        arrow_right.onclick = function(){
+        	if(flag){
+        		flag = false;// 关闭节流阀
+        		// 如果走到了最后复制的一张图片,此时我们的ul要快速复原,left改为0
+                if(num == ul.children.length-1){
+                    ul.style.left = 0;
+                    num = 0;
+                }
+                num++;
+                animated(ul,-num*1200,function(){
+                	flag = true;// 动画执行完毕以后,打开节流阀
+                });
+                // 7.点击右侧按钮,小圆圈跟随一起变化,可以再声明一个变量控制小圆圈的 播放
+                circle++;
+                // 如果circle变量等于 ol.children.length 说明走到最后我们克隆的这张图片了 我们就复原
+                if(circle == ol.children.length){
+                    circle = 0;
+                }
+                circleChange();
+            }
+        }
+
+        // 左侧按钮
+        arrow_left.onclick = function(){
+            if(flag){
+                flag = false;
+                if(num == 0){
+                    // ul.style.left =  ul.children.length-1 * bannerWidth + "px";
+                    // num = ul.children.length-1;
+
+                    num = ul.children.length-1;
+                    ul.style.left =  -num * bannerWidth + "px";
+                }
+                num--;
+                animated(ul,-num*bannerWidth,function(){
+                    flag = true;
+                });
+                // 7.点击左侧按钮,小圆圈跟随一起变化,可以再声明一个变量控制小圆圈的 播放
+                circle--;
+                // 如果circle < 0 说明第一张图片,则小圆圈要改为最后一个,也就是ol中最后一个li
+                if(circle < 0 ){
+                    circle = ol.children.length-1;
+                }
+                circleChange();
+            }
+        }
+
+        // 小圆点变化的函数
+        function circleChange(){
+            // 先清除其他小圆圈的current类名
+            for(var k = 0;k<ol.children.length; k++){
+            ol.children[k].removeAttribute("class");
+            }
+            ol.children[circle].setAttribute("class","current");
+        }
+        
+        // 自动播放轮播图
+        var timer = setInterval(function(){
+            // 手动调用点击事件
+            arrow_right.click();
+        },2000);
+
+
+    </script>
+
+
+	<!-- 分类层开始	 -->
+	<div class="classify w">
+		<ul>
+			<li><a href="#"><img src="images/kinds01.png" title="今日新品"></a></li>
+			<li><a href="#"><img src="images/kinds02.png" title="热销单品"></a></li>
+			<li><a href="#"><img src="images/kinds03.png" title="每日特价"></a></li>
+			<li><a href="#"><img src="images/kinds04.png" title="好物专题"></a></li>
+		</ul>
+	</div>
+	<!-- 分类层结束	 -->
+
+
+	<!-- 侧边栏开始 -->
+	<div class="sidebar">
+		<ul>
+			<li>
+				<a href="#"><span class="iconfont">&#xe621;</span>下载<div class="app">APP</div></a>
+				<!-- 二维码层 -->
+				<div class="ewm">
+					<a href="#">
+						<img src="images/meili-app-qrcode140X140.png">
+					</a>
+				</div>
+			</li>
+			<li><a href="#"><span class="iconfont">&#xe657;</span>购物车</a></li>
+			<li><a href="#"><span class="iconfont">&#xe72c;</span>消息</a></li>
+			<li><a href="#"><span class="iconfont">&#xe639;</span>优惠券</a></li>
+			<li><a href="#"><span class="iconfont">&#xe610;</span>收藏</a></li>
+			<li><a href="#"><span class="iconfont">&#xe638;</span>足迹</a></li>
+			<li><a class="backup" href="javascript:void(0)"><span class="iconfont">&#xe633;</span></a></li>
+		</ul>
+	</div>
+	<!-- 侧边栏结束 -->
+
+	<!-- 侧边栏js效果 -->
+	<script type="text/javascript">
+		// 获取回到顶部对象
+		var backup = document.querySelector(".backup");
+
+		window.addEventListener("scroll",function(){
+			// 显示和隐藏返回顶部
+            if( window.pageYOffset > 0 ){
+                backup.style.display = "block";
+            }else{
+                backup.style.display = "none";
+            }
+		})
+		
+		// 给backup按钮绑定鼠标点击事件
+        backup.onclick = function(){
+            // 因为是整个页面滚动,所以对象是window
+            animated_scroll( window ,0 );
+        }
+	</script>
+	
+	<!-- 如果内容出现的位置,不是默认的位置,一般是前面元素浮动造成的,清除浮动即可 -->
+	
+	<!-- 额外标签法,清除浮动 -->
+	<div style="clear:both;"></div>
+
+
+	<!-- 今日新品开始 -->
+	<div class="today_new_goods w">
+		<!-- 标题部分 -->
+		<div class="title">
+			<a href="#" class="fr">查看更多></a>
+			<ul>
+				<li class="current"><a href="javascript:void(0)">今<span>日新</span>品</a></li>
+				<li><a href="javascript:void(0)">一<span>周热</span>销</a></li>
+			</ul>
+		</div>
+		<!-- 内容部分开始 -->
+		<div class="content" style="display: block;">
+			<ul>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/dress01.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/dress02.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods03.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods04.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods05.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods06.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods07.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods08.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods09.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods10.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- 内容部分结束 -->
+
+		<!-- 内容部分开始 -->
+		<div class="content" style="display: none;">
+			<ul>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods11.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods12.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods13.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods14.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods15.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods16.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods17.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods18.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods19.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+				<li>
+					<!-- 商品图片 -->
+					<div class="product_img">
+						<a href="#"><img src="images/goods20.png"/></a>
+					</div>
+
+					<!-- 商品价格与收藏数量 -->
+					<div class="money">
+						<div class="price fl">56.25</div>
+						<div class="number fr">278</div>
+					</div>
+
+					<!-- 商品描述 -->
+					<div class="desc">
+						小清新新款韩版气质收腰显瘦百搭蕾丝边V领木耳边镂空休闲连衣裙
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- 内容部分结束 -->
+	</div>
+	<!-- 今日新品结束 -->
+
+	<!-- 选项卡效果 -->
+	<script>
+		/* 获取对象 */
+		var lis = document.querySelectorAll(".today_new_goods .title ul li");
+		var todayContents =  document.querySelectorAll(".today_new_goods .content");
+		for(var i=0;i<lis.length;i++){
+			lis[i].setAttribute("index",i);
+			lis[i].onclick=function(){
+				for(var j=0;j<lis.length;j++){
+					lis[j].removeAttribute("class");
+					todayContents[j].style.display = "none";
+				}
+				this.className = "current";
+				todayContents[this.getAttribute("index")].style.display = "block";
+			}
+		}
+	</script>
+
+
+		<!-- 好物组货开始 -->
+	<div class="good-goods w">
+		<div class="title-wrap">
+			<a href='#'>查看更多></a>
+			<h3>好物组货</h3>
+		</div>
+		<div class="content">
+			<div class="item">
+				<a href="#">
+					<div class="shadow">
+						<div class="desc">50款商品</div>
+					</div>
+				</a>
+				<div class="part">
+					<a href="#">
+						<div class="price">
+							<img src="images/dress01.png">
+							<p>&yen;&nbsp;100.00</p>
+						</div>
+					</a>
+					<a href="#">
+						<div class="price">
+							<img src="images/dress02.png">
+							<p>&yen;&nbsp;100.00</p>
+						</div>
+					</a>
+					<a href="#">
+						<div class="price">
+							<img src="images/dress03.png">
+							<p>&yen;&nbsp;100.00</p>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="item">
+				<a href="#">
+					<div class="shadow">
+						<div class="desc">50款商品</div>
+					</div>
+				</a>
+				<div class="part">
+					<a href="#">
+						<div class="price">
+							<img src="images/pants01.png" alt="">
+							<p>&yen;&nbsp;100.00</p>
+						</div>
+					</a>
+					<a href="#">
+						<div class="price">
+							<img src="images/pants02.png" alt="">
+							<p>&yen;&nbsp;100.00</p>
+						</div>
+					</a>
+					<a href="#">
+						<div class="price">
+							<img src="images/pants03.png" alt="">
+							<p>&yen;&nbsp;100.00</p>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="item">
+				<a href="#">
+					<div class="shadow">
+						<div class="desc">50款商品</div>
+					</div>
+				</a>
+				<div class="part">
+					<a href="#">
+						<div class="price">
+							<img src="images/shoes01.png" alt="">
+							<p>&yen;&nbsp;100.00</p>
+						</div>
+					</a>
+					<a href="#">
+						<div class="price">
+							<img src="images/shoes02.png" alt="">
+							<p>&yen;&nbsp;100.00</p>
+						</div>
+					</a>
+					<a href="#">
+						<div class="price">
+							<img src="images/shoes03.png" alt="">
+							<p>&yen;&nbsp;100.00</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 好物组货结束 -->
+	
+	<!-- 底部开始 -->
+	<div class="footer">
+		<div class="w">
+			<dl>
+				<dt><h2>买家帮助</h2></dt>
+				<dd><a href="#">新手指南</a></dd>
+				<dd><a href="#">服务保障</a></dd>
+				<dd><a href="#">常见问题</a></dd>
+				<dd><a href="#">风险监测</a></dd>
+			</dl>
+			<dl>
+				<dt><h2>商家帮助</h2></dt>
+				<dd><a href="#">供货商招募</a></dd>
+				<dd><a href="#">商家后台</a></dd>
+			</dl>
+			<dl>
+				<dt><h2>关于我们</h2></dt>
+				<dd><a href="#">关于美丽说</a></dd>
+				<dd><a href="#">联系我们</a></dd>
+			</dl>
+			<dl>
+				<dt><h2>关注我们</h2></dt>
+				<dd><a href="#"><span class='sina-weibo'></span>新浪微博</a></dd>
+				<dd><a href="#"><span class='qq-zone'></span>QQ空间</a></dd>
+				<dd><a href="#"><span class='qq-weibo'></span>腾讯微博</a></dd>
+			</dl>
+			<div class="qrcode">
+				<div class="server">
+					<h3>美丽说微信服务号</h3>
+					<img src="images/weixin-server-qrcode.jpg" alt="">
+				</div>
+				<div class="meili-app">
+					<h3>美丽说客户端下载</h3>
+					<img src="images/meili-app-qrcode.png" alt="">
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+			<div class='content'>
+				<p>Copyright ©2017 xxxxxxxx.com  电信与信息服务业务经营许可证xxxxxx号 经营性网站备案信息</p>
+				<p>
+		京ICP备xxxxxxxx号  京公网安备xxxxxxxx   客服电话：xxxx-xxx-xxx  文明办网文明上网举报电话：xxx-xxxxxxxx  违法不良信息举报中心</p>
+			</div>
+		</div>
+	</div>
+	<!-- 底部结束 -->
+</body>
+</html>

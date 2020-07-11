@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .score{
+            margin-top: 44px;
+            margin-left: 50px;
+            margin-bottom: 50px;
+        }
+        .box{
+            width: 400px;
+            height: 400px;
+            border:1px solid blue;
+            margin-left: 50px;
+            position: relative;
+            /* 溢出隐藏 */
+            overflow: hidden;
+        }
+        .box .game {
+            /* 因为我们需要使用js让.game游戏区向下运动,所以需要有定位方式 */
+            position: absolute;
+            left: 0;
+            top: -50px;
+        }
+        .box .game .row{
+            height: 100px;
+            width: 400px;
+        }
+        .box .game .row div{
+            width: 98px;
+            height: 98px;
+            border:1px solid #808080;
+            float: left;
+            background: white;
+        }
+        .box .game .row .black{
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- 分数文本框 -->
+    <input type="text" class="score" disabled="disabled" value="0"/>
+
+    <!-- 外层大盒子 .box-->
+    <div class="box">
+        <!-- 需要不断向下移动的游戏区 .game -->
+        <div class="game">
+            <!-- .row代表一行  一行里面有4个格子,每个格子我们还是使用div表示-->
+            <div class="row">
+                <div class="black"></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="row">
+                <div></div>
+                <div class="black"></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="row">
+                <div></div>
+                <div></div>
+                <div class="black"></div>
+                <div></div>
+            </div>
+            <div class="row">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="black"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 需要什么对象?  别踩白块游戏对象
+        // 这个对象具有什么属性?  
+        // 1.下落速度
+        // 2. 游戏是否结束
+        // 3. 分数值
+        // 4. 分数文本框DOM对象
+        // 5. 游戏区域DOM对象
+        // 6. 保存定时器的返回值
+
+
+        // 这个对象具有什么方法?
+        // 1. 游戏区域不断下落的方法
+        // 2. 创建一行的方法
+        // 3. 判断游戏是否结束的方法
+        // 4. 游戏初始化的方法
+
+        // 定义一个变量that
+        var that = null;
+        
+        // 定义一个别踩白块游戏对象
+        function Game(){
+            // 缓存this   this在构造函数里面代表实例化的那个对象
+            that = this;
+
+            // 对象的属性
+            // 1.下落速度
+            this.speed = 1;
+            // 2. 游戏是否结束
+            this.gameover = false;
+            // 3. 分数值
+            this.fenshu = 0;
+            // 4. 分数文本框DOM对象
+            this.score = document.querySelector(".score");
+            // 5. 游戏区域DOM对象
+            this.game = document.querySelector(".game");
+            // 6. 保存定时器的返回值
+            this.timer = null;
+
+            // 调用init初始化方法
+            this.init();
+        }
+
+        // 通过原型对象添加方法
+        // 1. 游戏区域不断下落的方法
+        Game.prototype.moveDown = function(){
+            // 因为在定时器里面的this是代表window对象,所以我们需要使用缓存this变量that
+
+            this.timer = setInterval(function(){
+                that.game.style.top = that.game.offsetTop + that.speed + "px";
+
+                if( that.game.offsetTop >= 0 ){// 到达底部
+                    if( that.game.lastElementChild.getAttribute("pass") == null ){
+                        alert("游戏区域到达底部了,最后一行还有黑块未点击,游戏结束");
+                        that.gameover = true;
+                        window.clearInterval( that.timer );
+
+                        return;
+                    }
+
+                    // 创建一行
+                    that.createRow();
+
+                    that.game.style.top = "-100px";
+
+
+                    if( that.game.children.length > 5){
+                        that.game.lastElementChild.remove();
+                    }
+                }
+
+            },15);
+
+        }
+        // 2. 创建行的方法
+        Game.prototype.createRow = function(){
+            var row = document.createElement("div");
+            row.className = "row";
+
+            var random = Math.floor( Math.random()*4+1 );
+
+            for( var i = 1; i <= 4 ; i++){
+                var div = document.createElement("div");
+                if( random == i ){
+                    div.className = "black";
+                }
+                row.appendChild( div );  
+            }
+            that.game.insertBefore(row , that.game.children[0] );
+        }
+        // 3. 判断游戏是否结束的方法
+        Game.prototype.isOver = function(){
+            this.game.onclick = function( e ){
+
+                // 事件对象兼容处理
+                var e = e || window.event;
+
+                if( that.gameover ){// 判断游戏是否已经结束
+                    alert("游戏已经结束");
+                }else{
+                    if( e.target.className == "black" ){// 如果点击的是黑块,黑块变白,加1分
+                        // 删除类名属性
+                        e.target.removeAttribute("class");
+                        
+                        // 加分
+                        that.fenshu++;
+                        that.score.value = that.fenshu;
+                        
+                        if( that.fenshu%5 == 0){// 假设每多5分,我们就增加1的下落速度
+                            that.speed++;
+                        }
+                        e.target.parentNode.setAttribute( "pass" , true);
+
+                    }else{
+                        alert("游戏结束");
+                        window.clearInterval( that.timer );
+                        this.gameover = true;
+                    }
+                }
+                
+            }
+        }
+        // 4. 游戏初始化的方法
+        Game.prototype.init = function(){
+            this.moveDown();
+            this.isOver();
+        }
+
+        // 实例化对象,就可以执行构造函数 中代码
+        new Game();
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+html,
+body {
+  height: 100%;
+  font-family: "宋体";
+}
+
+body {
+//   transform: rotateY(-89deg);
+//   transform-style: preserve-3d;
+}
+
+.stage {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7889cb;
+
+//   transform-style: preserve-3d;
+  transition: all 0.5s ease;
+//   perspective: 1000px;
+
+  .card {
+    width: 30%;
+    padding-bottom: 40%;
+    background: url("../img/600x600.jpg") red no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border-radius: 15px;
+    transform-origin: 50% 50% 100px;
+    transition: inherit;
+    transform: translateZ(200px);
+    position: relative;
+
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        font-size: 36px;
+      }
+      h3 {
+        // font-size: 10px;
+        line-height: 3em; //em以字体的大小为倍数 默认16px位单位
+      }
+      ul.chart {
+        display: flex;
+        justify-content: center;
+        li{
+
+        }
+      }
+      p{
+          font-size: 36px;
+      }
+    }
+  }
+
+  &.active{
+      .card{
+          transform: translateZ(200px) rotateX(60deg);
+      }
+  }
+}

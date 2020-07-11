@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style>
+        .x-left {
+            border-right: 2px solid lightgrey;
+            height: 800px;
+            position: fixed;
+            width: 28%;
+        }
+
+        .x-right {
+            float: right;
+            width: 72%;
+            height: 100px;
+        }
+
+        .clearfix::after {
+            content: ".";
+            display: block;
+            visibility: hidden;
+            height: 0;
+            line-height: 0;
+            clear: both;
+        }
+
+        .left {
+            height: 100%;
+        }
+
+        .left-head {
+            padding-top: 30px;
+            padding-left: 30px;
+            cursor: pointer;
+        }
+
+        .left-head .x-img {
+            display: inline-block;
+            overflow: hidden;
+            position: absolute;
+            top: 30px;
+        }
+
+        .left-head .x-img img {
+            width: 44px;
+        }
+
+        .left-head .x-list {
+            list-style: none;
+            display: inline-block;
+            line-height: 44px;
+            font-size: 20px;
+        }
+
+        .left-head .x-list li {
+            float: left;
+            font-weight: bolder;
+            margin: 0 12px;
+        }
+
+        .left-head .x-list li:nth-child(1) {
+            margin-left: 30px;
+        }
+
+        .left-head .x-tu {
+            display: inline-block;
+            color: lightgrey;
+            line-height: 38px;
+            font-size: 16px;
+            margin-right: 20px;
+        }
+
+        .left-content {
+            position: absolute;
+            top: 240px;
+            left: 100px;
+        }
+
+        .left-content h3 {
+            font-weight: bolder;
+            font-size: 30px;
+        }
+
+        .left-content .x-login {
+            list-style: none;
+            font-size: 20px;
+            position: absolute;
+            left: -40px;
+            color: rgba(0, 0, 0, 0.56);
+        }
+
+        .left-content .x-login li {
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .left-content .x-login li:nth-child(1):hover,
+        .left-content .x-login li:nth-child(2):hover {
+            color: black;
+        }
+
+        .left-content .x-login li:nth-child(3) {
+            font-weight: bold;
+            color: black;
+            border-bottom: 4px solid #00A862;
+        }
+
+        .x-right .right-one img {
+            width: 100%;
+        }
+
+        .x-right .right-one {
+            position: relative;
+        }
+
+        .x-right .right-one span {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #000;
+            color: #fff;
+            opacity: 0.6;
+            padding: 0px 6px;
+            border-radius: 2px;
+            font-size: 1.2rem;
+            line-height: 180%;
+        }
+
+        .right-two {
+            background-color: #023529;
+            width: 100%;
+            position: relative;
+        }
+
+        .right-two span {
+            position: absolute;
+            left: 50%;
+            width: 0;
+            border-width: 14px;
+            border-style: solid;
+            border-color: #14767c transparent transparent transparent;
+        }
+
+        .right-two .two-up {
+            text-align: center;
+        }
+
+        .right-two .two-up .up-head {
+            padding: 48px 0px 60px;
+        }
+
+        .right-two .two-up .up-head img {
+            width: 30%;
+        }
+
+        .up-center {
+            width: 100%;
+            max-width: 1200px;
+            height: 233px;
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+
+        .up-center .up-item {
+            width: 25%;
+            float: left;
+        }
+
+        .up-center .up-item .item-tu img {
+            width: 120px;
+        }
+
+        .up-center .up-item .item-content {
+            color: white;
+        }
+
+        .up-foot {
+            color: white;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .up-foot p a {
+            color: #00A862;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .two-down {
+            width: 100%;
+        }
+
+        .two-down img {
+            width: 100%;
+        }
+
+        .right-three {
+            background-color: #EBF3F5;
+            width: 100%;
+        }
+
+        .right-three .three-up {
+            text-align: center;
+        }
+
+        .right-three .three-up .three-head {
+            padding: 48px 0px 60px;
+        }
+
+        .right-three .three-up .three-head img {
+            width: 58%;
+        }
+
+        .three-center {
+            width: 100%;
+            max-width: 1200px;
+            height: 233px;
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+
+        .three-center .three-item {
+            width: 33.33333333%;
+            float: left;
+        }
+
+        .three-center .three-item .item-tu img {
+            width: 154px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .three-center .three-item .item-content p {
+            font-size: 20px;
+            color: #000;
+            text-align: center;
+            line-height: 140%;
+        }
+
+        .three-center .three-item .item-content p .green {
+            color: #00A862;
+        }
+
+        .three-center .three-item .item-content p .gold {
+            color: #C2A661;
+        }
+
+        .three-foot p a {
+            color: #00A862;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .three-down {
+            width: 100%;
+        }
+
+        .three-down img {
+            width: 100%;
+        }
+
+        .right-four {
+            width: 100%;
+        }
+
+        .right-four .four-up {
+            text-align: center;
+        }
+
+        .right-four .four-up .four-head {
+            padding: 48px 0px 40px;
+        }
+
+        .right-four .four-up .four-head img {
+            width: 30%;
+        }
+
+        .four-center {
+            width: 100%;
+            max-width: 1200px;
+            height: 440px;
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+
+        .four-center .four-item {
+            width: 33.33333333%;
+            float: left;
+        }
+
+        .four-center .four-item .item-tu img {
+            width: 190px;
+            margin: 0 auto;
+        }
+
+        .four-center .four-item .item-tu span {
+            width: 36px;
+            height: 2px;
+            margin: 20px auto 20px;
+            display: block;
+        }
+
+        .four-center .four-item .item-tu .one {
+            background-color: #DDDDDD;
+        }
+
+        .four-center .four-item .item-tu .two {
+            background-color: #00A862;
+        }
+
+        .four-center .four-item .item-tu .three {
+            background-color: #C2A661;
+        }
+
+        .four-center .four-item .item-content ul {
+            list-style: none;
+            padding-left: 20px;
+            margin: 0 auto;
+            max-width: 190px;
+        }
+
+        .four-center .four-item .item-content ul li {
+            font-size: 19px;
+            color: black;
+            text-align: left;
+            padding-left: 14px;
+            position: relative;
+            line-height: 140%;
+            margin-bottom: 10px;
+        }
+
+        .four-center .four-item .item-content ul li::before {
+            position: absolute;
+            left: 0px;
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 10px;
+            top: 7px;
+        }
+
+        .four-center .four-item .item-content .one li::before {
+            background-color: #DDDDDD;
+        }
+
+        .four-center .four-item .item-content .two li::before {
+            background-color: #00A862;
+        }
+
+        .four-center .four-item .item-content .three li::before {
+            background-color: #C2A661;
+        }
+
+        .four-foot p a {
+            color: #00A862;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .four-down {
+            width: 100%;
+        }
+
+        .four-down img {
+            width: 100%;
+        }
+
+        .right-five {
+            width: 100%;
+        }
+
+        .right-five .five-up {
+            text-align: center;
+        }
+
+        .right-five .five-up .five-head {
+            padding: 48px 0px 40px;
+        }
+
+        .right-five .five-up .five-head img {
+            width: 55%;
+        }
+
+        .right-five .five-up .five-center p {
+            font-size: 32px;
+            color: rgba(0, 0, 0, 0.56);
+        }
+
+        .right-five .five-up .five-foot ul {
+            list-style: none;
+            overflow: hidden;
+            border-bottom: 4px solid #e8ebea;
+            
+        }
+
+        .right-five .five-up .five-foot ul li {
+            text-align: center;
+            vertical-align: middle;
+            float: left;
+            width: 20%;
+            margin: 0 auto;
+            margin-top: 80px;
+            /* padding-bottom: 5px; */
+        }
+
+        .right-five .five-up .five-foot ul li .image1 {
+            width: auto;
+            height: 100px;
+            max-width: 100%;
+        }
+
+        .right-five .five-up .five-foot ul li p {
+            font-size: 32px;
+        }
+
+        .right-five .five-up .five-foot ul .active p {
+            padding-bottom: 15px;
+            border-bottom: 4px solid #006441;
+            margin: 0px;
+        }
+
+        .right-five .five-up .five-foot ul li .image2 {
+            width: 25px;
+            margin-left: 4px;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="x-content">
+        <div class="x-row">
+            <div class=" x-left">
+                <div class="left">
+                    <div class="left-head ">
+                        <span class="x-img"><img
+                                src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/logo.svg"
+                                alt=""></span>
+                        <ul class="x-list">
+                            <li>门店</li>
+                            <li>我的账户</li>
+                            <li>菜单</li>
+                        </ul>
+                        <span class="x-tu pull-right"><img
+                                src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/icons/icon-hamburger.svg"
+                                alt=""></span>
+                    </div>
+                    <div class="left-content">
+                        <h3>登录或创建一个新帐户 🌟</h3>
+                        <ul class="x-login">
+                            <li>登录</li>
+                            <li>注册</li>
+                            <li>关于星享俱乐部</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class=" x-right clearfix">
+                <div class="right-one">
+                    <img src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/featured/club_upgrade/banner-new-2.jpeg"
+                        alt="">
+                    <span>广告</span>
+                </div>
+                <div class="right-two">
+                    <span></span>
+                    <div class="two-up">
+                        <div class="up-head">
+                            <img src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/titles/01-rewards-title.png"
+                                alt="">
+                        </div>
+                        <div class="up-center">
+                            <div class="up-item clearfix">
+                                <div class="item-tu"><img
+                                        src="https://www.starbucks.com.cn/assets/images/sbux-rewards/new-rewards-1.png"
+                                        alt="">
+                                </div>
+                                <div class="item-content">
+                                    <h2>消费累积小星星</h2>
+                                    <p>每累计消费<b>￥50</b>元累积一颗星星<br>使用星巴克指定的方式，可享加速积星</p>
+                                </div>
+                            </div>
+                            <div class="up-item">
+                                <div class="item-tu"><img
+                                        src="https://www.starbucks.com.cn/assets/images/sbux-rewards/new-rewards-2.png"
+                                        alt="">
+                                </div>
+                                <div class="item-content">
+                                    <h2>积星升级 好礼享不停</h2>
+                                </div>
+                            </div>
+                            <div class="up-item">
+                                <div class="item-tu"><img
+                                        src="https://www.starbucks.com.cn/assets/images/sbux-rewards/new-rewards-3.png"
+                                        alt="">
+                                </div>
+                                <div class="item-content">
+                                    <h2>会员专享星星奖励活动</h2>
+                                </div>
+                            </div>
+                            <div class="up-item">
+                                <div class="item-tu"><img
+                                        src="https://www.starbucks.com.cn/assets/images/sbux-rewards/new-rewards-4.png"
+                                        alt="">
+                                </div>
+                                <div class="item-content">
+                                    <h2>星星兑换丰富好礼</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="up-foot">
+                            <p>详情以<a>《星享俱乐部活动的条款和条件》</a>的规定为准</p>
+                        </div>
+                    </div>
+                    <div class="two-down">
+                        <img src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/bg-banner-01-new.jpg"
+                            alt="">
+                    </div>
+                </div>
+
+                <div class="right-three">
+                    <div class="three-up">
+                        <div class="three-head">
+                            <img src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/titles/02-member-upgrade-title-new.png"
+                                alt="">
+                        </div>
+                        <div class="three-center">
+                            <div class="three-item clearfix">
+                                <div class="item-tu"><img
+                                        src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/1star.png"
+                                        alt="">
+                                </div>
+                                <div class="item-content">
+                                    <p>注册星享俱乐部帐户<br>即成为<b>银星级</b>会员<br>可开始消费积星星</p>
+                                </div>
+                            </div>
+                            <div class="three-item">
+                                <div class="item-tu"><img
+                                        src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/4stars.png"
+                                        alt="">
+                                </div>
+                                <div class="item-content">
+                                    <p>累积<b>4</b>颗星星<br>升级至<b class="green">玉星级</b>会员</p>
+                                </div>
+                            </div>
+                            <div class="three-item">
+                                <div class="item-tu"><img
+                                        src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/20stars.png"
+                                        alt="">
+                                </div>
+                                <div class="item-content">
+                                    <p>玉星级<br>再累积<b>16</b>颗星星<br>升级至<b class="gold">金星级</b>会员</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="three-foot">
+                            <p>详情以<a>《星享俱乐部活动的条款和条件》</a>的规定为准</p>
+                        </div>
+                    </div>
+                    <div class="three-down">
+                        <img src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/bg-banner-02-new.jpg"
+                            alt="">
+                    </div>
+                </div>
+
+                <div class="right-four">
+                    <div class="four-up">
+                        <div class="four-head">
+                            <img src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/titles/03-member-gift-title-new.png"
+                                alt="">
+                        </div>
+                        <div class="four-center">
+                            <div class="four-item ">
+                                <div class="item-tu"><img
+                                        src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/welcome-star-cn.png"
+                                        alt="">
+                                    <span class="one"></span>
+                                </div>
+                                <div class="item-content">
+                                    <ul class="one">
+                                        <li>购买绑定会员星礼包可直通玉星级</li>
+                                        <li>各类奖励星星活动</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="four-item">
+                                <div class="item-tu"><img
+                                        src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/green-star-cn.png"
+                                        alt="">
+                                    <span class="two"></span>
+                                </div>
+                                <div class="item-content">
+                                    <ul class="two">
+                                        <li>玉星晋级饮品券</li>
+                                        <li>金星在望饮品券</li>
+                                        <li>生日饮品券</li>
+                                        <li>永享玉星级保级</li>
+                                        <li>各类奖励星星活动</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="four-item">
+                                <div class="item-tu"><img
+                                        src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/gold-star-cn.png"
+                                        alt="">
+                                    <span class="three"></span>
+                                </div>
+                                <div class="item-content">
+                                    <ul class="three">
+                                        <li>金星晋级饮品券</li>
+                                        <li>周年庆饮品券</li>
+                                        <li>生日饮品券</li>
+                                        <li>永享玉星级保级</li>
+                                        <li>好礼星星兑换</li>
+                                        <li>各类奖励星星活动</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="four-foot">
+                            <p>详情以<a>《星享俱乐部活动的条款和条件》</a>的规定为准</p>
+                        </div>
+                    </div>
+                    <div class="four-down">
+                        <img src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/bg-banner-03-new.png"
+                            alt="">
+                    </div>
+                </div>
+
+                <div class="right-five">
+                    <div class="five-up">
+                        <div class="five-head">
+                            <img src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/images/sbux-rewards/titles/04-member-gold-rights-new.png"
+                                alt="">
+                        </div>
+                        <div class="five-center">
+                            <p>快来升级金星会员，各种兑换好礼等你</p>
+                        </div>
+                        <div class="five-foot">
+                            <ul>
+                                <li class="active clearfix"><img
+                                        src="https://www.starbucks.com.cn/assets/images/account/1-star-redeem-right-website-active.png"
+                                        alt="" class="image1">
+                                    <p>1<img class="image2"
+                                            src="https://www.starbucks.com.cn/assets/icons/icon-star-gold.svg" alt="">
+                                    </p>
+                                </li>
+                                <li class="clearfix"><img
+                                        src="https://www.starbucks.com.cn/assets/images/account/9-star-redeem-right-website.png"
+                                        alt="" class="image1">
+                                    <p>9<img class="image2"
+                                            src="https://www.starbucks.com.cn/assets/icons/icon-star-gold.svg" alt="">
+                                    </p>
+                                </li>
+                                <li class="clearfix"><img
+                                        src="https://www.starbucks.com.cn/assets/images/account/12-star-redeem-right-website.png"
+                                        alt="" class="image1">
+                                    <p>12<img class="image2"
+                                            src="https://www.starbucks.com.cn/assets/icons/icon-star-gold.svg" alt="">
+                                    </p>
+                                </li>
+                                <li class="clearfix"><img
+                                        src="https://www.starbucks.com.cn/assets/images/account/15-star-redeem-right-website.png"
+                                        alt="" class="image1">
+                                    <p>15<img class="image2"
+                                            src="https://www.starbucks.com.cn/assets/icons/icon-star-gold.svg" alt="">
+                                    </p>
+                                </li>
+                                <li class="clearfix"><img
+                                        src="https://www.starbucks.com.cn/assets/images/account/25-star-redeem-right-website.png"
+                                        alt="" class="image1">
+                                    <p>25<img class="image2"
+                                            src="https://www.starbucks.com.cn/assets/icons/icon-star-gold.svg" alt="">
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    </script>
+
+<!-- https://www.starbucks.com.cn/account/starbucks-rewards/ -->
+</body>
+
+</html>

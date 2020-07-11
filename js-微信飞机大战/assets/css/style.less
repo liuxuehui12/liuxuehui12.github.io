@@ -1,0 +1,118 @@
+// 混合
+.button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid black;
+  background: #c4c9ca;
+  padding: 0 30px;
+  line-height: 30px;
+  border-radius: 18px;
+  outline: none;
+}
+
+// 嵌套
+.stage {
+  width: 360px;
+  height: 640px;
+  background: lightblue;
+  margin: 0px auto;
+  position: relative;
+  overflow: hidden;
+  .start {
+    width: 100%;
+    height: 100%;
+    background: url("../images/background-start.png") no-repeat lightcoral;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s;
+    button {
+      .button();
+      bottom: 100px;
+    }
+  }
+  .game {
+    width: 100%;
+    height: 100%;
+    background: url("../images/background-game.png");
+    background-size: 100% 100%;
+    background-position-y: 0;
+    position: absolute;
+    top: 0;
+    left: 360px;
+    transition: all 0.3s;
+
+    table.ranking {
+      width: 50%;
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      margin-left: -25%;
+      transition: all 0.3s;
+
+      // border-radius: 10px;
+      border: 2px solid black;
+      background: #c4c9ca;
+       z-index: 999;
+
+      tr {
+        th,
+        td {
+          text-align: center;
+        }
+      }
+    }
+
+    .death-scene {
+      position: absolute;
+      bottom: -100px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      transition: all 0.3s;
+       z-index: 999;
+      button {
+        display: block;
+      }
+      .paylife {
+        .button();
+        position: relative;
+      }
+      .restart {
+        .button();
+        position: relative;
+        margin-top: 15px;
+      }
+    }
+
+    img {
+      display: block;
+      // background: red;
+      position: absolute;
+    }
+  }
+
+  &.play {
+    .start {
+      left: -360px;
+    }
+    .game {
+      left: 0;
+    }
+  }
+
+  &.paused {
+    table.ranking {
+      top: 100px;
+    }
+  }
+
+  &.death {
+    .death-scene {
+      bottom: 100px;
+    }
+  }
+}
