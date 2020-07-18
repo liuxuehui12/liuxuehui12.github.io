@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            overflow: hidden;
+            width: 600px;
+            background: pink;
+            position: relative;
+        }
+
+        ul li {
+            width: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* transition: all 0.8s; */
+        }
+
+        ul li .mask {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.5);
+            /* transition: inherit; */
+            color: white;
+            overflow: hidden;
+        }
+
+        h5,
+        h6 {
+            margin: 0;
+        }
+
+        h5 {
+            color: aquamarine;
+        }
+
+        ul li .mask .info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            /* transition: inherit; */
+            font-size: 14px;
+            width: 100%;
+            margin-left: 10%;
+        }
+
+        ul li .mask .desc {
+            position: absolute;
+            bottom: 0;
+            left: 100%;
+            /* transition: inherit; */
+            font-size: 24px;
+            width: 100%;
+            margin-left: 10%;
+        }
+
+        ul li:nth-child(1) .mask {
+            height: 20%;
+        }
+
+        ul li:nth-child(1) .mask .info {
+            left: -100%;
+        }
+
+        ul li:nth-child(1) .mask .desc {
+            left: 0;
+        }
+
+        ul li img {
+            width: 100%;
+            display: block;
+        }
+
+        ul li:nth-of-type(1) {
+            position: relative;
+        }
+
+        ul li:nth-of-type(2) {
+            left: 200px;
+        }
+
+        ul li:nth-of-type(3) {
+            left: 300px;
+        }
+
+        ul li:nth-of-type(4) {
+            left: 400px;
+        }
+
+        ul li:nth-of-type(5) {
+            left: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="stage">
+        <li>
+            <img src="./images/datouwang1.jpg" alt="">
+            <div class="mask">
+                <div class="info">
+                    <h5>胜率</h5>
+                    <h6>NO.1</h6>
+                </div>
+                <div class="desc">
+                    <h6>墨子</h6>
+                    <h5>胜率NO.1</h5>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="./images/datouwang2.jpg" alt="">
+            <div class="mask">
+                <div class="info">
+                    <h5>出场</h5>
+                    <h6>NO.1</h6>
+                </div>
+                <div class="desc">
+                    <h6>董卓</h6>
+                    <h5>胜率NO.1</h5>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="./images/datouwang3.jpg" alt="">
+            <div class="mask">
+                <div class="info">
+                    <h5>MVP</h5>
+                    <h6>NO.1</h6>
+                </div>
+                <div class="desc">
+                    <h6>吕布</h6>
+                    <h5>胜率NO.1</h5>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="./images/datouwang4.jpg" alt="">
+            <div class="mask">
+                <div class="info">
+                    <h5>场均击杀</h5>
+                    <h6>NO.1</h6>
+                </div>
+                <div class="desc">
+                    <h6>袁术</h6>
+                    <h5>胜率NO.1</h5>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="./images/datouwang5.jpg" alt="">
+            <div>
+                <class class="mask">
+                    <div class="info">
+                        <h5>场均助攻</h5>
+                        <h6>NO.1</h6>
+                    </div>
+                    <div class="desc">
+                        <h6>赵云</h6>
+                        <h5>胜率NO.1</h5>
+                    </div>
+            </div>
+        </li>
+    </ul>
+
+    <script>
+        // var lis = document.getElementsByTagName("li");
+        // var ul = document.querySelector("ul");
+        // var li = document.querySelector("li");
+        // var liW = ul.offsetWidth - li.offsetWidth;
+        // //console.log(masks);
+
+        // function activeIndex(current) {
+        //     for (var i = 0; i < lis.length; i++) {
+        //         if (i <= current) {
+        //             //处理前面的||当前的
+        //             lis[i].style.left = i * (liW / (lis.length - 1)) + "px";
+        //         } else {
+        //             //处理后面的
+        //             lis[i].style.left = li.offsetWidth + (i - 1) * (liW / (lis.length - 1)) + "px";
+        //         }
+
+        //         //当前的添加类
+        //         if (i == current) {
+        //             lis[i].classList.add("active");
+        //         } else {
+        //             lis[i].classList.remove("active");
+        //         }
+        //     }
+        // }
+
+        // activeIndex(0);
+
+        // for (var i = 0; i < lis.length; i++) {
+        //     lis[i].index = i;
+        //     lis[i].onmouseover = function () {
+        //         activeIndex(this.index);
+        //     }
+        // }
+
+        $("li").hover(function () {
+            var currentIndex = $(this).index();
+
+            //forEach jq里面改成了 each方法 index,element 他们参数的顺序相反
+            $("li").each(function (index, element) {
+                if (index <= currentIndex) {
+                    $(element).animate({
+                        left: 100 * index + "px"
+                    }, 300)
+                } else {
+                    $(element).animate({
+                        left: 100 * (index - 1) + 200 + "px"
+                    }, 300)
+                }
+
+                if(index == currentIndex){
+                    $("li").eq(index).find(".mask").stop().animate({height:"20%"});
+                    $("li").eq(index).find(".info").stop().animate({left:"-100%"});
+                    $("li").eq(index).find(".desc").stop().animate({left:"0"});
+                }else{
+                    $("li").eq(index).find(".mask").stop().animate({height:"100%"});
+                    $("li").eq(index).find(".info").stop().animate({left:"0%"});
+                    $("li").eq(index).find(".desc").stop().animate({left:"100%"});
+                }
+            })
+        }, function () {
+            $("li").clearQueue();
+        })
+    </script>
+</body>
+
+</html>

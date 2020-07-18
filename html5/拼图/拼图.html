@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: lightslategrey;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .begin {
+            width: 300px;
+            margin-top: 150px;
+            margin-left: 50px;
+        }
+
+        button {
+            width: 100px;
+            height: 30px;
+            display: block;
+            cursor: pointer;
+        }
+
+        input {
+            margin-top: 20px;
+        }
+
+        .tip {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .box {
+            width: 500px;
+            height: 700px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .tupian {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            padding: 0;
+        }
+
+        .tupian li {
+            width: 90px;
+            height: 90px;
+            margin-left: 10px;
+            cursor: pointer;
+
+        }
+
+        .tupian li:hover {
+            transform: translateY(-2px);
+        }
+
+        .tupian li:nth-of-type(1) {
+            margin-left: 5px;
+        }
+
+        .tupian li img {
+            width: 100%;
+        }
+
+        .stage {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            width: 500px;
+            height: 500px;
+            background: lightblue;
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .stage li {
+            background: lightcoral;
+            border-radius: 5px;
+            box-shadow: 0 0 0 3px white inset;
+            background-image: url("./img/1.jpg");
+            /* background-size: 400% auto; */
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 0.3s;
+        }
+
+        .sure {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="stage"></ul>
+        <ul class="tupian">
+            <li><img src="./img/1.jpg" alt=""></li>
+            <li><img src="./img/2.jpg" alt=""></li>
+            <li><img src="./img/3.jpg" alt=""></li>
+            <li><img src="./img/4.jpg" alt=""></li>
+            <li><img src="./img/5.jpg" alt=""></li>
+        </ul>
+    </div>
+    <div class="begin">
+        <button class="gamebg">开始</button>
+        <input type="text" placeholder="请输入单个数字" value="" maxlength="2" pattern="^\d">
+        <button class="sure">确定</button>
+        <ul class="tip">
+            <li>完成: 0</li>
+            <li>交换: 0</li>
+            <li>说明:</li>
+            <li>-点击开始，小图片将随机打乱；</li>
+            <li>-点击下面的图片列表，可以任意切换如果点击开始需要完成才能选择哦</li>
+            <li>-拖动小图片可交换位置，顺序完全正确则为成功；</li>
+            <li>-难度由自己设定,最小难度为3*3</li>
+            <li>-对应的分值为以一百为基准依次往上增加一百,比如选择4*4就是200分,5*5就是300分.可以慢慢挑战自己哦,加油!</li>
+        </ul>
+    </div>
+
+    <script>
+        var size = 2;
+        var stage = document.querySelector(".stage");
+        var list = document.querySelectorAll(".tupian li");
+        var input = document.querySelector(".begin input");
+        var btn = document.querySelector(".begin .sure");
+        var gamebg = document.querySelector(".begin .gamebg");
+        var finish = document.querySelectorAll(".tip li")[0];
+        var huan = document.querySelectorAll(".tip li")[1];
+
+        var changes = true;
+        var game = false;
+        var count = 0;
+        var score = 0;
+
+        //获取尺寸
+        // input.onkeyup = function () {
+        //     if(input.value)
+        // };
+
+        btn.onclick = function (event) {
+            // console.log(input.value);
+            size = parseInt(input.value);
+            create();
+            changes = true;
+            change();
+            count = 0;
+            tuofang();
+
+
+        }
+
+        gamebg.onclick = function () {
+            game = true;
+            if (game) {
+                shuffle();
+                tuofang();
+                count = 0;
+                huan.innerText = "交换: " + count;
+            }
+        }
+
+        create();
+        tuofang();
+
+
+        function create() {
+            stage.innerHTML = "";
+            for (var i = 0; i < size * size; i++) {
+                var node = document.createElement("li");
+
+                //动态设置尺寸
+                node.style.width = 100 / size + "%";
+                node.style.height = 100 / size + "%";
+
+                //设置每个背景图的偏移
+                node.style.backgroundPosition =
+                    (i % size) * -100 +
+                    "% " +
+                    Math.floor(i / size) * -100 +
+                    "%";
+
+                //设置每个节点的偏移
+                node.style.left = (i % size) * (100 / size) + "%";
+                node.style.top = Math.floor(i / size) * (100 / size) + "%";
+
+                //设置背景图的尺寸
+                node.style.backgroundSize = size * 100 + "% auto"
+
+                //允许拖放
+                node.draggable = "true";
+
+                //设置自定义属性
+                node.id = "card" + i;
+
+                stage.appendChild(node);
+            }
+        }
+
+
+
+        //切换图片
+        function change() {
+            // console.log(changes);
+
+
+            var bg = document.querySelectorAll(".stage li");
+            list.forEach(function (element, index) {
+                // console.log(element, index);
+                element.onclick = function () {
+                    count = 0;
+                    huan.innerText = "交换: " + count;
+
+                    score = 0;
+                    finish.innerText = "完成: " + score;
+
+                    if (changes == true) {
+                        // console.log(index);
+                        for (var i = 0; i < bg.length; i++) {
+                            // console.log(bg[i]);
+                            bg[i].style.backgroundImage = "url('./img/" + (index + 1) + ".jpg')";
+                        }
+                    }
+                }
+            })
+        }
+
+        change();
+
+
+        //洗牌
+        // function shuffle() {
+        //     for (var i = 0; i < size * size; i++) {
+        //         var random = Math.floor(Math.random() * size * size);
+
+        //         stage.appendChild(cards[random]);
+        //     }
+        // }
+
+        function random() {
+            return Math.floor(Math.random() * size * size);
+        }
+
+        // function shuffle() {
+        //     for (var i = 0; i < 9; i++) {
+        //         var random1 = random();
+        //         do {
+        //             var random2 = random();
+        //         } while (random1 == random2);
+
+        //         // console.log(random1, random2);
+        //         // console.log(cards[random1].style.top);
+        //         // console.log(cards[random1].style.left);
+
+        //         var pos1 = {
+        //             top: cards[random1].style.top,
+        //             left: cards[random1].style.left,
+        //         };
+
+        //         var pos2 = {
+        //             top: cards[random2].style.top,
+        //             left: cards[random2].style.left,
+        //         }
+
+        //         cards[random1].style.top = pos2.top;
+        //         cards[random1].style.left = pos2.left;
+
+        //         cards[random2].style.top = pos1.top;
+        //         cards[random2].style.left = pos1.left;
+        //     }
+        // }
+
+        function shuffle() {
+            var cards = stage.querySelectorAll(".stage li");
+            changes = false;
+
+            // console.log(size);
+
+            //生成一个0到8的数组 顺序是0到8
+            var arr = [];
+            for (var i = 0; i < size * size; i++) {
+                arr.push(i);
+            }
+            // console.log(arr);
+
+            //定义一个新数组来打乱本来的数组
+            var tmp = [];
+
+            for (var i = 0; i < size * size; i++) {
+                tmp.push(
+                    arr.splice(Math.floor(Math.random() * arr.length), 1)[0]
+                );
+            }
+            // console.log(tmp);
+
+            //把顺序的定位按乱序的定义来定义
+            cards.forEach(function (element, index) {
+                element.style.left =
+                    (tmp[index] % size) * (100 / size) + "%";
+                element.style.top =
+                    Math.floor(tmp[index] / size) * (100 / size) + "%";
+            });
+        }
+
+        //给每个li设置拖放
+        function tuofang() {
+            if (game) {
+
+                var cards = stage.querySelectorAll(".stage li");
+                cards.forEach(function (element, index) {
+
+                    //获取当前拖的元素
+                    element.ondragstart = function (event) {
+                        event.dataTransfer.setData("text", event.target.id);
+                    }
+
+                    //阻止默认事件
+                    element.ondragover = function (event) {
+                        event.preventDefault();
+                    }
+
+                    element.ondrop = function (event) {
+                        count++;
+                        huan.innerText = "交换: " + count;
+
+                        // console.log("drop",event.target,event.dataTransfer.getData("text"));
+
+                        //获取拖放的两个元素
+                        var e1 = event.target;
+                        var e2 = document.getElementById(
+                            event.dataTransfer.getData("text")
+                        );
+
+                        //交换两个元素的定位
+                        var tmp = {
+                            top: e1.style.top,
+                            left: e1.style.left,
+                        };
+
+                        e1.style.top = e2.style.top;
+                        e1.style.left = e2.style.left;
+
+                        e2.style.top = tmp.top;
+                        e2.style.left = tmp.left;
+                        // console.log(e1,e2);
+
+                        //判断每个li是不是与开始的定位对应
+
+                        var check = Array.prototype.every.call(cards, function (
+                            element,
+                            index
+                        ) {
+                            return (
+                                parseInt(element.style.top) ==
+                                parseInt(
+                                    Math.floor(index / size) * (100 / size) +
+                                    "%"
+                                ) &&
+                                parseInt(element.style.left) ==
+                                parseInt((index % size) * (100 / size) + "%")
+                            );
+                        });
+
+                        setTimeout(function () {
+                            if (check) {
+                                alert("你太棒了,你成功了");
+                                changes = true;
+                                game = false;
+                                score = 100 * size;
+                                finish.innerText = "完成: " + score;
+                            }
+                        }, 500);
+
+                    };
+                });
+
+            }
+        }
+    </script>
+</body>
+
+</html>

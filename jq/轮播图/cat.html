@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .swipe {
+            width: 800px;
+            overflow: hidden;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .swipe .content {
+            width: 4000px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .swipe .content li {
+            width: 800px;
+            height: 400px;
+            float: left;
+        }
+
+        .swipe .content li img {
+            width: 100%;
+
+        }
+
+        .swipe .pagination {
+            font-size: 0;
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            margin-left: -80px;
+        }
+
+        .swipe .pagination li {
+            width: 20px;
+            height: 20px;
+            background: lightskyblue;
+            color: white;
+            font-size: 12px;
+            display: inline-block;
+            margin: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .swipe .pagination li.active {
+            background: lightpink;
+        }
+
+        .swipe .control {
+            font-size: 50px;
+            color: mediumorchid;
+            cursor: pointer;
+            display: none;
+        }
+
+        .swipe .control span:first-child {
+            position: absolute;
+            top: 50%;
+            margin-top: -34px;
+        }
+
+        .swipe .control span:last-child {
+            position: absolute;
+            top: 50%;
+            margin-top: -34px;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swipe">
+        <ul class="content">
+            <li><img src="./images/miao1.jpg" alt=""></li>
+            <li><img src="./images/miao2.jpg" alt=""></li>
+            <li><img src="./images/miao3.jpg" alt=""></li>
+            <li><img src="./images/miao4.jpg" alt=""></li>
+            <li><img src="./images/miao5.jpg" alt=""></li>
+        </ul>
+
+        <ul class="pagination">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <div class="control">
+            <span>⇦</span>
+            <span>⇨</span>
+        </div>
+    </div>
+
+    <script>
+        var w = $(".swipe").width();
+        //给每个图片一个索引标识
+        $(".content li").attr("title", function (index) {
+            return index
+        })
+
+        //给每个小点点
+        $(".pagination li").attr("title", function (index) {
+            return index
+        })
+
+        //根据原始的下标查找对应的图片
+        function filterByIndex(n) {
+            return $(".content li").filter(function (index) {
+                return $(this).attr("title") == n
+            })
+        }
+
+        //显示下一张方法
+        function nextPic() {
+            $(".content").animate({
+                left: -w + "px"
+            }, function () {
+                //动画完成之后 把当前第一张移动到最后面
+                $(".content").children().first().appendTo($(".content"));
+                //恢复定位0
+                $(".content").stop().css({
+                    left: 0
+                }, )
+            })
+        }
+
+        function prevPic() {
+            $(".content").stop().css({
+                left: -w + "px"
+            }).animate({
+                left: "0"
+            }, )
+        }
+
+        //高亮小点点
+        function dot(n) {
+            $(".pagination li").each(function (index, element) {
+                // console.log(element, index)
+                if (n == index) {
+                    $(element).addClass("active");
+                } else {
+                    $(element).removeClass("active");
+                }
+            })
+        }
+
+        //鼠标移上显示
+        $(".swipe").hover(function () {
+            $(".control").show();
+            clearInterval(timer);
+        }, function () {
+            $(".control").hide();
+
+            timer = setInterval(function () {
+
+                //先确定当前下标
+                var currentIndex = $(".content").children().first().attr("title");
+
+                //根据当前的确定下一张
+                var preparedIndex = ++currentIndex > $(".content li").length - 1 ? 0 : currentIndex
+
+                nextPic();
+                dot(preparedIndex);
+            }, 1000);
+        })
+
+        //自动播放
+        var timer = setInterval(function () {
+            //先确定当前下标
+            var currentIndex = $(".content").children().first().attr("title");
+
+            //根据当前的确定下一张
+            var preparedIndex = ++currentIndex > $(".content li").length - 1 ? 0 : currentIndex
+
+            nextPic();
+            dot(preparedIndex);
+        }, 1000);
+
+
+
+
+
+
+        $(".pagination li").click(function () {
+            //获取当前线束图片的原始下标
+            var currentIndex = $(".content").children().first().attr("title");
+
+            //获取即将显示的图片的下标
+            var preparedIndex = $(this).index();
+
+            //判断两个下标
+            if (currentIndex < preparedIndex) {
+                //即将显示的图片放在 当前的后面 
+                //找到后把即将显示的图片插入当前的第一张之后
+                $(".content").children().first().after(filterByIndex(preparedIndex));
+
+                //从右往左滑动
+                nextPic()
+            } else if (currentIndex > preparedIndex) {
+                //即将显示的图片放在 当前的前面 
+                //找到后把即将显示的图片插入当前的第一张之前
+                $(".content").children().first().before(filterByIndex(preparedIndex));
+                prevPic()
+            }
+            //高亮小点点
+            dot(preparedIndex);
+
+        })
+
+        //下一张点击
+        $(".control span").last().click(function () {
+            //先确定当前下标
+            var currentIndex = $(".content").children().first().attr("title");
+
+            //根据当前的确定下一张
+            var preparedIndex = ++currentIndex > $(".content li").length - 1 ? 0 : currentIndex
+
+            //确定好下一张就放在当前的后面
+            $(".content").children().first().after(filterByIndex(preparedIndex));
+
+            //从左往右滑动
+            nextPic();
+
+            //高亮小点点
+            dot(preparedIndex);
+        })
+
+        //上一张点击
+        $(".control span").first().click(function () {
+            //确定当前下标
+            var currentIndex = $(".content").children().first().attr("title");
+
+            //根据当前的确定上一张
+            var preparedIndex = --currentIndex < 0 ? $(".content li").length - 1 : currentIndex
+
+            //确定好上一张就放在当前的前面
+            $(".content").children().first().before(filterByIndex(preparedIndex));
+
+            //从右到左滑动
+            prevPic();
+
+            //高亮小点点
+            dot(preparedIndex);
+        })
+    </script>
+</body>
+
+</html>

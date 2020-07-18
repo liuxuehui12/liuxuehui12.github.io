@@ -1,0 +1,361 @@
+/* 导航栏样式开始 */
+.g_header{
+    width: 100%;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 9999;
+}
+.g_nav{
+    background-color: rgba(231, 231, 231, 0.5);
+    border-radius: 0;
+    margin-bottom: 0;
+}
+.g_nav .navbar-brand{
+    color: #777;
+    height: 80px;
+    line-height: 50px;
+}
+.g_nav .navbar-brand img{
+    width: 124px;
+    height: 42px;
+    vertical-align: middle;
+    transform: translateY(4px);
+}
+
+.g_nav .navbar-brand:hover,
+.g_nav .navbar-brand:focus{
+    color: #5e5e5e;
+    background-color: transparent;
+}
+
+.g_nav .navbar-text{
+    color: #777;
+}
+.g_nav .navbar-nav > li > a{
+    color: #777;
+    height: 80px;
+    line-height: 50px;
+    color: #333;
+    font-weight: bold;
+}
+.g_nav .navbar-nav > li > a span.col_gray{
+    color: #ccc;
+}
+.g_nav .navbar-nav > li > a:hover,
+.g_nav .navbar-nav > li > a:focus{
+    color: #333;
+    background-color: transparent;
+}
+.g_nav .navbar-nav > .active > a,
+.g_nav .navbar-nav > .active > a:hover,
+.g_nav .navbar-nav > .active > a:focus{
+    color: red;
+}
+.g_nav .navbar-nav > .disabled > a,
+.g_nav .navbar-nav > .disabled > a:hover,
+.g_nav .navbar-nav > .disabled > a:focus{
+    color:#ccc;
+    background-color: transparent;
+}
+.g_nav .navbar-toggle{
+    border-color: #ddd;
+    margin-top: 23px;
+    margin-bottom: 23px;
+}
+.g_nav .navbar-toggle:hover,
+.g_nav .navbar-toggle:focus{
+   background-color: #ddd;
+}
+.g_nav .navbar-toggle .icon-bar{
+    background-color: #888;
+}
+.g_nav .navbar-collapse,
+.g_nav .navbar-form{
+    border-color: #e7e7e7;
+}
+.g_nav .navbar-nav > .open > a,
+.g_nav .navbar-nav > .open > a:hover,
+.g_nav .navbar-nav > .open > a:focus{
+   color: #555;
+   background-color: #e7e7e7;
+}
+@media(max-width:767px){
+    .g_nav .navbar-nav .open .dropdown-menu > li > a{
+        color: #777;
+    }
+    .g_nav .navbar-nav .open .dropdown-menu > li > a:hover,
+    .g_nav .navbar-nav .open .dropdown-menu > li > a:focus{
+        color: #333;
+        background-color: transparent;
+    }
+    .g_nav .navbar-nav .open .dropdown-menu > .active > a,
+    .g_nav .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .g_nav .navbar-nav .open .dropdown-menu > .active > a:focus{
+        color: #555;
+        background-color: #e7e7e7;
+    }
+    .g_nav .navbar-nav .open .dropdown-menu > .disabled > a,
+    .g_nav .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+    .g_nav .navbar-nav .open .dropdown-menu > .disabled > a:focus{
+        color: #ccc;
+        background-color:transparent;
+    }
+}
+.g_nav .navbar-link{
+    color: #777;
+}
+.g_nav .navbar-link:hover{
+    color: #333;
+}
+.g_nav .btn-link{
+    color: #777;
+}
+.g_nav .btn-link:hover,
+.g_nav .btn-link:focus{
+    color: #333;
+}
+.g_nav .btn-link[disabled]:hover,
+fieldset[disabled] .g_nav .btn-link:hover,
+.g_nav .btn-link[disabled]:focus,
+fieldset[disabled] .g_nav .btn-link:focus{
+    color: #ccc;
+}
+
+/* 导航栏样式结束 */
+
+/* 轮播图样式开始 */
+
+.g_banner .item img{
+    width: 100%;
+}
+
+.g_banner .box{
+    width: 30px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.f_left{
+    float: left;
+}
+.f_right{
+    float: right;
+}
+.g_banner .link_box{
+    height: 80px;
+    top: 50%;
+    margin-top: -40px;
+    bottom: auto;
+    background-color: transparent;
+}
+.g_banner .carousel-control.left{
+    left: 10px;
+}
+.g_banner .carousel-control.right{
+    right: 10px;
+}
+.g_banner .carousel-control.left,
+.g_banner .carousel-control.right{
+    background-image: initial;
+}
+/* 轮播图样式结束 */
+
+/* 产品列表样式开始 */
+.g_list{
+    width: 100%;
+    padding: 30px 0;
+    background-color: #ccc;
+}
+.g_list .tip{
+    width: 100%;
+    padding: 20px 0 50px 0;
+}
+.g_list .tip h2{
+    text-align: center;
+}
+.g_list .product{
+    width: 100%;
+    padding: 0 5px;
+}
+
+.g_list .product .row{
+    margin: 0;
+}
+.g_list .product .row > div{
+    padding: 0 5px;
+}
+.g_list .product .row > div > .box{
+    width: 100%;
+    background-color: #fff;
+}
+.g_list .product .row > div > .box img{
+    width: 100%;
+}
+.g_list .product .row > div > .box p{
+    height: 80px;
+    line-height: 1.8;
+}
+.g_list .btn{
+    width: 100%;
+    padding: 20px 0 30px 0;
+}
+.g_list .btn .link{
+    display: inline-block;
+    padding: 12px 18px;
+    background-color: darkred;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* 产品列表样式结束 */
+
+/* 关于我们样式开始 */
+.g_aboutus{
+    width: 100%;
+    padding: 30px 0;
+    background-color: #fff;
+}
+.g_aboutus h2{
+    text-align: center;
+}
+.g_aboutus .box{
+    padding: 20px 0;
+}
+.g_aboutus .box p{
+    text-align: center;
+}
+.g_aboutus .box p:first-child{
+    color: darkred;
+}
+.g_aboutus ul{
+    list-style: none;
+}
+.g_aboutus ul li div{
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    box-sizing: border-box;
+}
+.g_aboutus ul li div span{
+    display: block;
+    height: 30px;
+    font-size: 23px;
+    font-family: "arial, helvetica, sans-serif";
+    color: darkred;
+}
+.g_aboutus ul li div p{
+    height: 20px;
+    font-size: 14px;
+    color: #666;
+}
+/* 关于我们样式结束 */
+
+/* 合作伙伴样式开始 */
+.g_friend{
+    width: 100%;
+    padding: 30px 0;
+    background-color: #f0f0f0;
+}
+.g_friend h2{
+    text-align: center;
+}
+.g_friend .box{
+    width: 100%;
+}
+.g_friend .box ul{
+    list-style: none;
+}
+.g_friend .box ul::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.g_friend .box ul li{
+    width: 20%;
+    float: left;
+    text-align: center;
+}
+.g_friend .box ul li img{
+    width: 70%;
+}
+
+@media(min-width:1200px){
+    .w{
+        width: 970px !important;
+        margin: 0 auto;
+    }
+}
+/* 合作伙伴样式结束 */
+
+/* 文案说明样式开始 */
+.g_detail{
+    width: 100%;
+    padding: 20px 0;
+    background-color: #fff;
+}
+.g_detail h2{
+    text-align: center;
+}
+.g_detail p{
+    text-align: center;
+}
+.g_detail ul{
+    list-style: none;
+}
+.g_detail ul li .box img{
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+}
+.g_detail ul li .box span{
+    display: block;
+    text-align: center;
+}
+/* 文案说明样式结束 */
+
+/* 友好链接样式开始 */
+.g_link{
+    width: 100%;
+    padding: 20px 0;
+    background-color: #fff;
+}
+.g_link .container ul{
+   width: 100%;
+   list-style: none;
+   /* 弹性布局 */
+   display: flex;
+}
+.g_link .container ul li{
+    flex: 1;
+}
+.g_link .container ul li a{
+    display: block;
+    color: #333;
+    padding-top: 10px;
+    text-decoration: none;
+}
+/* 友好链接样式结束 */
+
+/* 底部样式开始 */
+.g_footer{
+    width: 100%;
+    padding:30px 0;
+    background-color: #ccc;
+    text-align: center;
+}
+.g_footer img{
+    width: 160px;
+}
+.g_footer p{
+    padding: 10px 0;
+    font-size: 12px;
+    color: #666;
+}
+/* 底部样式结束 */

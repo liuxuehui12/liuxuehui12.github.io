@@ -1,0 +1,390 @@
+/*  导航条  css start */
+.yl_header {
+  width: 100%;
+  position: fixed;/* 固定定位*/
+  top:0;
+  left: 0;
+  z-index: 1000;
+}
+.yl_nav {
+  background-color:rgba(231,231,231,0.5);
+  border-radius: 0;/* 设置圆角*/
+  margin-bottom: 0;
+
+}
+.yl_nav .navbar-brand {
+  color: #777;
+  height: 80px;
+  line-height: 50px;
+}
+
+.yl_nav .navbar-brand img { /*修改LOGO图片大小*/
+	/* 156* 52 */
+	width:124px;
+	height:42px;
+	vertical-align: middle; /*设置行内元素垂直居中*/
+	transform: translateY(4px);
+}
+
+
+.yl_nav .navbar-brand:hover,
+.yl_nav .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+.yl_nav .navbar-text {
+  color: #777;
+}
+.yl_nav .navbar-nav > li > a {
+  color: #777;
+  height: 80px;
+  line-height: 50px;/* 设置文本垂直居中 ， 首页找padding-top,padding-bottom是多少，设置行高*/
+  color:#333;
+  font-weight: bold;
+}
+.yl_nav .navbar-nav > li > a span.col_gray {
+	color:#ccc;
+}
+
+
+.yl_nav .navbar-nav > li > a:hover,
+.yl_nav .navbar-nav > li > a:focus {
+  color: #333;
+  background-color: transparent;
+}
+.yl_nav .navbar-nav > .active > a,
+.yl_nav .navbar-nav > .active > a:hover,
+.yl_nav .navbar-nav > .active > a:focus {
+  
+  color: red;/* 把导航栏的选中项的字体改红色*/
+}
+.yl_nav .navbar-nav > .disabled > a,
+.yl_nav .navbar-nav > .disabled > a:hover,
+.yl_nav .navbar-nav > .disabled > a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+.yl_nav .navbar-toggle {
+  border-color: #ddd;
+  margin-top:23px;/* (80 - 34 ) / 2 = 23 */
+  margin-bottom: 23px;
+}
+.yl_nav .navbar-toggle:hover,
+.yl_nav .navbar-toggle:focus {
+  background-color: #ddd;
+}
+.yl_nav .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+.yl_nav .navbar-collapse,
+.yl_nav .navbar-form {
+  border-color: #e7e7e7;
+}
+.yl_nav .navbar-nav > .open > a,
+.yl_nav .navbar-nav > .open > a:hover,
+.yl_nav .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+@media (max-width: 767px) {
+  .yl_nav .navbar-nav .open .dropdown-menu > li > a {
+    color: #777;
+  }
+  .yl_nav .navbar-nav .open .dropdown-menu > li > a:hover,
+  .yl_nav .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+    background-color: transparent;
+  }
+  .yl_nav .navbar-nav .open .dropdown-menu > .active > a,
+  .yl_nav .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .yl_nav .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+  }
+  .yl_nav .navbar-nav .open .dropdown-menu > .disabled > a,
+  .yl_nav .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .yl_nav .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+  }
+}
+.yl_nav .navbar-link {
+  color: #777;
+}
+.yl_nav .navbar-link:hover {
+  color: #333;
+}
+.yl_nav .btn-link {
+  color: #777;
+}
+.yl_nav .btn-link:hover,
+.yl_nav .btn-link:focus {
+  color: #333;
+}
+.yl_nav .btn-link[disabled]:hover,
+fieldset[disabled] .yl_nav .btn-link:hover,
+.yl_nav .btn-link[disabled]:focus,
+fieldset[disabled] .yl_nav .btn-link:focus {
+  color: #ccc;
+}
+
+/*  导航条  css   end */
+
+
+/* 轮播图  css start */
+
+.yl_banner .item img {
+	width: 100%;
+}
+
+.yl_banner .box {
+	width: 30px;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	background-color: rgba(0,0,0,0.8);
+}
+
+.f_left {
+	float: left;
+}
+.f_right {
+	float: right;
+}
+.yl_banner .link_box {
+	height: 80px;
+	top:50%;
+	margin-top: -40px;
+	bottom: auto;
+	background-color: transparent;
+}
+.yl_banner .carousel-control.left {
+	left:10px;
+}
+.yl_banner .carousel-control.right {
+	right: 10px;
+}
+.yl_banner .carousel-control.left ,
+.yl_banner .carousel-control.right {
+	background-image:initial;
+}
+/* 轮播图  css end */
+
+
+/*产品列表   css start */
+.yl_list {
+	width: 100%;
+	padding: 30px 0;
+	background-color: #ccc;
+}
+.yl_list .tip {
+	width: 100%;
+	padding: 20px 0 50px 0;
+}
+.yl_list .tip h2 {
+	text-align: center;
+}
+.yl_list .product {
+	width: 100%;
+	padding: 0 5px;
+}
+
+.yl_list .product .row {
+	margin: 0;
+}
+.yl_list .product .row > div {
+	padding: 0 5px;
+}
+.yl_list .product .row > div >.box {
+	width: 100%;
+	background-color: #fff;
+}
+.yl_list .product .row > div >.box img {
+	width: 100%;
+}
+.yl_list .product .row > div >.box p {
+	/*padding-bottom: 15px;*/
+	height: 80px;
+	line-height: 1.8;
+}
+
+.yl_list .btn {
+	width: 100%;
+	padding: 20px 0 30px 0;
+}
+.yl_list .btn .link {
+	display: inline-block;
+	padding: 12px 18px;
+	background-color: darkred;
+	color: #fff;
+	text-decoration: none;
+}
+/*产品列表   css end  */
+
+/*关于我们 css start */
+.yl_aboutus {
+	width: 100%;
+	padding: 30px 0;
+	background-color: #ffffff;
+}
+.yl_aboutus h2 {
+	text-align: center;
+}
+.yl_aboutus .box {
+	padding: 20px 0;
+}
+.yl_aboutus .box p {
+	text-align: center;
+}
+.yl_aboutus .box p:first-child {
+	color:darkred;
+}
+.yl_aboutus ul {
+	list-style: none;
+}
+.yl_aboutus ul li {
+	/*border: 1px solid #ccc;*/
+}
+.yl_aboutus ul li div {
+	width: 120px;
+	height: 120px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	text-align: center;
+	/* (120- 50 ) / 2 = 35*/
+	padding-top:35px;
+	padding-bottom: 35px;
+	box-sizing: border-box;
+}
+.yl_aboutus ul li div span {
+	display: block;
+	height: 30px;
+	font-size: 23px;
+	font-family: "arial, helvetica, sans-serif";
+	color: darkred;
+}
+.yl_aboutus ul li div p {
+	height: 20px;
+	font-size: 14px;
+	color: #666;
+}
+/*关于我们 css end */
+
+
+/* 合作伙伴 css start */
+.yl_friend {
+	width: 100%;
+	padding: 30px 0;
+	background-color: #F0F0F0;
+}
+.yl_friend h2 {
+	text-align: center;
+}
+.yl_friend .box {
+	width: 100%;
+}
+.yl_friend .box ul {
+	list-style: none;
+}
+.yl_friend .box ul::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.yl_friend .box ul li {
+	width: 20%;
+	float: left;
+	text-align: center;
+}
+.yl_friend .box ul li img {
+	width: 70%;
+}
+
+@media (min-width:1200px ) {
+	.w {
+		width: 970px!important;/* 优先级*/
+		margin: 0 auto;
+	}
+}
+/* 合作伙伴 css end  */
+
+
+/* 文案说明  css  start */
+.yl_detail {
+	width:100%;
+	padding: 20px 0;
+	background-color: #fff;
+}
+.yl_detail h2 {
+	text-align: center;
+}
+
+.yl_detail p {
+	text-align: center;
+}
+
+.yl_detail ul {
+	list-style: none;
+}
+
+.yl_detail ul li  {
+	
+}
+.yl_detail ul li  .box {
+	
+}
+.yl_detail ul li  .box img {
+	display: block;
+	width: 80%;
+	margin: 10px auto;
+}
+.yl_detail ul li  .box span  {
+	display: block;
+	text-align: center;
+}
+
+/* 文案说明  css  end   */
+
+/* 友好链接 css start*/
+.yl_link {
+	width: 100%;
+	padding: 20px 0;
+	background-color: #fff;
+}
+.yl_link .container {}
+.yl_link .container  ul {
+	width: 100%;
+	list-style: none;
+	
+	/* 伸缩布局 弹性属性*/
+	display: flex;
+}
+.yl_link .container  ul li {
+	flex:1;
+}
+.yl_link .container  ul li a {
+	display: block;
+	color: #333;
+	padding-top: 10px;
+	text-decoration: none;
+}
+/* 友好链接 css end */
+
+
+/* 底部栏的 css start*/
+.yl_footer {
+	width: 100%;
+	padding: 30px 0;
+	background-color: #ccc;
+	text-align: center;
+}
+.yl_footer img {
+	width: 160px;
+}
+.yl_footer p {
+	padding: 10px 0 ;
+	font-size: 12px;
+	color: #666;
+}
+/* 底部栏的 css end*/
